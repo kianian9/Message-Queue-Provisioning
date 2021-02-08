@@ -1,0 +1,21 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+spec:
+  # TODO: Change this corresponding to machine nodes
+  resources:
+    requests:
+      cpu: 150m
+      memory: 2Gi
+    limits:
+      cpu: 500m
+      memory: 2Gi
+  replicas: 3
+  persistence:
+    storageClassName: rabbit-sc
+    storage: 3Gi
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_federation
+

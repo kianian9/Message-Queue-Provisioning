@@ -1,0 +1,17 @@
+TODO:
+	* Fix Kubernetes version (automatially sets 1.17 right now..)
+	* Run provisioning in script that also removes kube-config file and sets new
+
+https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/container_engine_versions
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk
+https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/preexisting-pd
+
+TO Update kubectl config:
+gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw zone)
+
+For getting created pvc run:
+    gcloud compute disks list
+For deleting created pvc:
+    gcloud compute disks delete "diskname" --quiet
+    
