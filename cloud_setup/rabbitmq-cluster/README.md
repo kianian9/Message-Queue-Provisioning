@@ -13,5 +13,4 @@ The **destroy_cluster**-script destroys the GKE-cluster and removes all assigned
 In order to change the replication-factor in the cluster, change the amount of worker nodes.
 Also change the replication for the RabbitMQ Cluster Instance (rabbit-instance.yaml).
 
-
-
+The Installation follows the **RabbitMQ Cluster Operator guide**: https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
