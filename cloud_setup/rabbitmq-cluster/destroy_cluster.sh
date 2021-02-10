@@ -1,5 +1,6 @@
 #!/bin/bash
 
+gcloud config set project rabbitmq-9999
 # Will destroy cluster and remove any disks in GCE
 if ! terraform destroy -auto-approve; then
     printf "\n\nCluster could not be destroyed!\n\n"

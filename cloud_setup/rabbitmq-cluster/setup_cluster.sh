@@ -1,5 +1,6 @@
 #!/bin/bash
 
+gcloud config set project rabbitmq-9999
 if ! terraform validate; then
     # Will initialize terraform files
     terraform init
@@ -9,7 +10,9 @@ fi
 if terraform apply -auto-approve; then
     printf "\nInitializing local kubectl\n"
     gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw zone)
-    # Setups standard persistent storage class
+    
+    # Setups persistent storage class (CSI Driver)
+    printf "\nCreating storage class (CSI-Driver)\n"
     kubectl apply -f rabbitmq/gce_standard_storageclass.yaml
     #kubectl apply -f rabbitmq/gce_ssd_storageclass.yaml
 
@@ -21,14 +24,6 @@ if terraform apply -auto-approve; then
     # Creating RabbitMQ Instances(Brokers)
     printf "\nInitializing RabbitMQ Instance(s)\n"
     kubectl apply -f rabbitmq/rabbit-instance.yaml
-
-    # Waiting some time for instances to create
-    #printf "Creating...\n"
-    #sleep 30
-
-    # Waiting for RabbitMQ Instances to be in ready-state
-    #printf "\nWaiting for Instance(s) to become ready\n"
-    #kubectl wait --for=condition=Ready pod/rabbitmq-server-0 pod/rabbitmq-server-1 pod/rabbitmq-server-2 --timeout 30m
     
     # Waiting for RabbitMQ Instances to be in ready-state
     printf "Waiting for Instance(s) to become ready...\n"
@@ -36,7 +31,6 @@ if terraform apply -auto-approve; then
     READY="Running"
     while [ $x -le 0 ]
     do
-        #IS_DONE=$(kubectl wait --for=condition=Ready pod/rabbitmq-server-0 pod/rabbitmq-server-1 pod/rabbitmq-server-2)
         IS_READY=$(kubectl get pods rabbitmq-server-2 -o jsonpath="Status: {.status.phase}" 2>/dev/null)
 
         if [[ "$IS_READY" =~ "$READY" ]]; then
@@ -44,11 +38,6 @@ if terraform apply -auto-approve; then
         else
             sleep 5
         fi        
-        #if echo "$IS_DONE" | grep -q "$ALL_PODS_READY_COND"; then
-        #    x=$(( $x + 1 ))
-        #else
-        #    sleep 5
-        #fi
     done
 
     # Setups RabbitMQ Cluster LoadBalancer
