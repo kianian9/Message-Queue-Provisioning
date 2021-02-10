@@ -1,6 +1,16 @@
 #!/bin/bash
 
 gcloud config set project kafka-304409
+
+# Removing any added FW-rules
+FW_RULES=$(gcloud compute firewall-rules list --format="value(name)")
+RULE="k8s"
+for rule in $FW_RULES; do
+    if [[ "$rule" =~ "$RULE" ]]; then
+        gcloud compute firewall-rules delete $rule --quiet
+    fi
+done
+
 # Will destroy cluster and remove any disks in GCE
 if ! terraform destroy -auto-approve; then
     printf "\n\nCluster could not be destroyed!\n\n"

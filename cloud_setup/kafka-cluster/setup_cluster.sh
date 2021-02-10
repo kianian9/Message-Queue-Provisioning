@@ -37,7 +37,6 @@ if terraform apply -auto-approve; then
     while [ $x -le 0 ]
     do
         IS_READY=$(kubectl get pods --namespace=kafka | grep kafka-cluster-entity-operator 2>/dev/null)
-
         if [[ "$IS_READY" =~ "$READY" ]]; then
             x=$(( $x + 1 ))
         else
@@ -46,13 +45,11 @@ if terraform apply -auto-approve; then
     done
 
     # Setups Kafka Cluster LoadBalancer
-    printf "\nSetups Kafka Cluster LoadBalancer\n"
-    kubectl apply -f kafka/kafka_lb.yaml --namespace kafka
-    printf "Waiting For Load Balancing IP...\n"
+    printf "\nWaiting For Load Balancing IP...\n"
     x=0
     while [ $x -le 0 ]
     do
-        LB_IP=$(kubectl get services kafka-http-lb --namespace kafka --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        LB_IP=$(kubectl get services kafka-cluster-kafka-external-bootstrap --namespace kafka --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
         if [[ ${#LB_IP} -gt 0 ]]; then
             x=$(( $x + 1 ))
         else
@@ -64,7 +61,7 @@ else
     exit 1
 fi
 
-printf "Kafka LB IP: $LB_IP\n"
+printf "Kafka LB IP: $LB_IP (external port 9094)\n"
 
 printf "\n\nCluster successfully created!\n\n"
 
