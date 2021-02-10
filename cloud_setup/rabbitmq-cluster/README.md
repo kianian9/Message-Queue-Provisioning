@@ -1,6 +1,17 @@
-# Learn Terraform - Provision a GKE Cluster
+# RabbitMQ Cluster - GKE
+Setups a RabbitMQ Cluster in GKE
 
-This repo is a companion repo to the [Provision a GKE Cluster learn guide](https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster), containing Terraform configuration files to provision an GKE cluster on GCP.
+## Setup Cluster
+The **setup_cluster**-script creates a 3 worker node cluster (zonal) where each broker is run on a separate node.
+Each node assigns a 3GB volume(standard HDD) for RabbitMQ persistent storaging.
 
-This sample repo also creates a VPC and subnet for the GKE cluster. This is not
-required but highly recommended to keep your GKE cluster isolated.
+## Destroy Cluster
+The **destroy_cluster**-script destroys the GKE-cluster and removes all assigned disks.
+
+
+## Parameters
+In order to change the replication-factor in the cluster, change the amount of worker nodes.
+Also change the replication for the RabbitMQ Cluster Instance (rabbit-instance.yaml).
+Can also set to run with SSD instead of actual HDD.
+
+The Installation follows the **RabbitMQ Cluster Operator guide**: https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
