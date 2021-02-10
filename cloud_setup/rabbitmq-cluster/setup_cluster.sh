@@ -13,9 +13,10 @@ if terraform apply -auto-approve; then
     kubectl apply -f rabbitmq/gce_standard_storageclass.yaml
     #kubectl apply -f rabbitmq/gce_ssd_storageclass.yaml
 
-    # Installs RabbitMQ Cluster Operator
+    # Installs RabbitMQ Cluster Operator (version v1.4.0 latest at the moment)
     printf "\nInstalling RabbitMQ Cluster Operator\n"
-    kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"
+    kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/download/v1.4.0/cluster-operator.yml"
+    #kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"
 
     # Creating RabbitMQ Instances(Brokers)
     printf "\nInitializing RabbitMQ Instance(s)\n"
