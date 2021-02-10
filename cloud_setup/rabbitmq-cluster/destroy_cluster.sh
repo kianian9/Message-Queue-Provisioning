@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Will destroy cluster
+# Will destroy cluster and remove any disks in GCE
 if ! terraform destroy -auto-approve; then
     printf "\n\nCluster could not be destroyed!\n\n"
     exit 1
@@ -11,7 +11,4 @@ else
     done
     printf "\n\nCluster successfully destroyed!\n\n"
 fi
-
-
-
 

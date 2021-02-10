@@ -21,7 +21,7 @@ variable "zone" {
   description = "zone"
 }
 
-
+# Kubernetes version
 data "google_container_engine_versions" "north1" {
   project        = var.project_id
   provider       = google-beta
