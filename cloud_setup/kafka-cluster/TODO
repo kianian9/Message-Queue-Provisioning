@@ -37,3 +37,6 @@ Useful Commands:
         --topic my-topic \
         --from-beginning
 
+
+TODO: 
+    * Could plain-listener in kafka-instance.yaml and instead change it to external. Possibly only have one external service instead!
