@@ -1,0 +1,31 @@
+1) Both NATS and STAN(Nats Streaming) run the monitoring and metric containers... (Bortkommenterade nu...)
+    Alt 1: Disabling monitoring and metric for Core NATS and only run them in Streaming
+
+
+
+The working one is stan directory:
+    1) Install storage class (gce_standard.storageclass.yaml)
+    2) Install nats-instance (core server) (nats-instance.yaml) and wait until all are done..
+    3) Install stan-instance (streaming) (stan-instance.yaml) and wait until all are done..
+    4) Install NATS-Operator:
+        4.1) kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-operator/master/deploy/00-prereqs.yaml
+            Alt: kubectl apply -f nats-operator1.yaml
+        
+        4.2) kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-operator/master/deploy/10-deployment.yaml
+            Alt: kubectl apply -f nats-operator2.yaml
+    
+    5) Install Prometheus-Operator:
+        kubectl apply -f prometheus-operator.yaml
+    6) Install NATS-cluster:
+        kubectl apply -f nats-cluster.yaml
+    
+    7) Install Prometheus role RBAC:
+        kubectl apply -f prometheus-rbac.yaml
+    8) Install Prometheus instance:
+        kubectl apply -f prometheus-instance.yaml
+
+    9) Install Service Monitor:
+        kubectl apply -f service-monitor.yaml
+    
+    10) The Prometheus Web Monitoring program runs on port 9090:
+        Uses nginx for exposing the service to one of the nodes (NodePort) right now, later use LoadBalancer

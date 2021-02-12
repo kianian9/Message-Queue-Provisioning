@@ -1,0 +1,11 @@
+apiVersion: "nats.io/v1alpha2"
+kind: "NatsCluster"
+metadata:
+  name: "nats-cluster"
+spec:
+  size: 3
+  version: "1.4.1"
+  pod:
+    enableMetrics: true
+    metricsImage: "synadia/prometheus-nats-exporter"
+    metricsImageTag: "0.3.0"
