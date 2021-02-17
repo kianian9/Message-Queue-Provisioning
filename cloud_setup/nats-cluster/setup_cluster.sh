@@ -6,7 +6,7 @@ if ! terraform validate; then
     terraform init
 fi
 
-# Setups rabbimq K8s cluster
+# Setups NATS K8s cluster
 if terraform apply -auto-approve; then
     printf "\nInitializing local kubectl\n"
     gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw zone)

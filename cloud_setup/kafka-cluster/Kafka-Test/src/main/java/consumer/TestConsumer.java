@@ -12,7 +12,7 @@ public class TestConsumer {
 
     public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
-        props.setProperty("bootstrap.servers", "35.228.58.123:9094");
+        props.setProperty("bootstrap.servers", "35.228.181.254:9094");
         props.setProperty("group.id", "test2");
         props.setProperty("enable.auto.commit", "true");
         props.setProperty("auto.commit.interval.ms", "100");

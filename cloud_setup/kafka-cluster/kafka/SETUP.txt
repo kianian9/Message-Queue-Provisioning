@@ -1,0 +1,22 @@
+1) Deploying the CoreOS Prometheus Operator
+    curl -s https://raw.githubusercontent.com/coreos/prometheus-operator/master/bundle.yaml | sed -e '/[[:space:]]*namespace: [a-zA-Z0-9-]*$/s/namespace:[[:space:]]*[a-zA-Z0-9-]*$/namespace: kafka/' > prometheus-operator-deployment.yaml
+
+2) Install Prometheus Operator:
+    kubectl apply -f prometheus-operator-deployment.yaml
+
+3) 
+
+kubectl apply -f kafka/prometheus-operator-deployment.yaml -n kafka
+
+kubectl apply -f kafka/prometheus-additional.yaml -n kafka
+
+kubectl apply -f kafka/strimzi-pod-monitor.yaml -n kafka
+
+kubectl apply -f kafka/prometheus-rules.yaml -n kafka
+
+kubectl apply -f kafka/prometheus.yaml -n kafka
+
+kubectl apply -f kafka/grafana.yaml -n kafka
+
+
+http://prometheus-operated:9090/

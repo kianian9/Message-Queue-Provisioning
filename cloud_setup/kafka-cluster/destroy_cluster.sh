@@ -2,6 +2,16 @@
 
 gcloud config set project kafka-304409
 
+# Removing Kafka cluster with external Load Balancers
+kubectl delete -f kafka/kafka-instance.yaml --namespace kafka
+
+# Removing any external Load Balancers
+FRONTEND=$(gcloud compute forwarding-rules list --format="value(name)")
+for rule in $FRONTEND; do
+    gcloud compute forwarding-rules delete $rule --quiet
+    gcloud compute target-pools delete $rule --quiet
+done
+
 # Removing any added FW-rules
 FW_RULES=$(gcloud compute firewall-rules list --format="value(name)")
 RULE="k8s"
