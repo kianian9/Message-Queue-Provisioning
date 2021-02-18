@@ -18,4 +18,3 @@ spec:
   rabbitmq:
     additionalPlugins:
       - rabbitmq_federation
-

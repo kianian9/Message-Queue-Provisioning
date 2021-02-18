@@ -43,6 +43,27 @@ if terraform apply -auto-approve; then
     # Setups RabbitMQ Cluster LoadBalancer
     printf "\nSetups RabbitMQ Cluster LoadBalancer\n"
     kubectl apply -f rabbitmq/rabbit_lb.yaml
+
+    # Creating Prometheous Operator
+    printf "\nInitializing Prometheous Operator\n"
+    kubectl apply -f rabbitmq/prometheus-operator-deployment.yaml
+
+    # Creating Prometheus Roles
+    printf "\nSetup Prometheous Roles\n"
+    kubectl apply -f rabbitmq/prometheus-roles.yaml
+
+    # Creating Prometheous Exporter
+    printf "\nInitializing Prometheous Exporter\n"
+    kubectl apply -f rabbitmq/prometheus.yaml
+
+    # Creating Prometheous Pod Monitor
+    printf "\nInitializing Prometheous Pod Monitor\n"
+    kubectl apply -f rabbitmq/rabbitmq-pod-monitor.yaml
+
+    # Creating Grafana Metric Visualizer
+    printf "\nInitializing Grafana Visualizer for Prometheous\n"
+    kubectl apply -f rabbitmq/grafana.yaml
+
     printf "Waiting For Load Balancing IP...\n"
     x=0
     while [ $x -le 0 ]
@@ -65,6 +86,8 @@ username=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.usern
 password=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.password}" | base64 --decode)
 printf "RabbitMQ Management Username:$username\n"
 printf "RabbitMQ Management Password:$password\n"
+
+printf "Grafana NodePort: 30009 with Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
 
 printf "\n\nCluster successfully created!\n\n"
 

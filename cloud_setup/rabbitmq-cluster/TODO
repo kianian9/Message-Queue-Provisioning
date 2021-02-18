@@ -1,6 +1,4 @@
-TODO:
-	* Fix Kubernetes version (automatially sets 1.17 right now..)
-	* Run provisioning in script that also removes kube-config file and sets new
+
 
 https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/container_engine_versions
 https://kubernetes.io/docs/concepts/storage/persistent-volumes/
@@ -14,4 +12,11 @@ For getting created pvc run:
     gcloud compute disks list
 For deleting created pvc:
     gcloud compute disks delete "diskname" --quiet
-    
+
+
+
+TODO:
+	* Fix Kubernetes version (automatially sets 1.17 right now..) [Fixed]
+	* Run provisioning in script that also removes kube-config file and sets new [Fixed]
+    * Fix NodePort on all Grafana pods (cheaper than LB)
+    * Fix Kubernetes Cluster Monitoring using Prometheus and Grafana for all clusters

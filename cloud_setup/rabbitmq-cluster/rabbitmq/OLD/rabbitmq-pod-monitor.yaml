@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: cluster-operator-metrics
+  labels:
+    app: rabbitmq
+spec:
+  podMetricsEndpoints:
+  - interval: 15s
+    port: prometheus
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rabbitmq
+  namespaceSelector:
+    any: true
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: rabbitmq
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: entity-operator
+  namespaceSelector:
+    any: true
+  podMetricsEndpoints:
+  - path: /metrics
+    port: healthcheck
+---
