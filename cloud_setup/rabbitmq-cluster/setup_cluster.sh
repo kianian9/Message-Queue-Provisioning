@@ -52,17 +52,29 @@ if terraform apply -auto-approve; then
     printf "\nSetup Prometheous Roles\n"
     kubectl apply -f rabbitmq/prometheus-roles.yaml
 
-    # Creating Prometheous Exporter
-    printf "\nInitializing Prometheous Exporter\n"
+    # Creating Prometheous Instance For RabbitMQ
+    printf "\nInitializing Prometheous Instance For RabbitMQ\n"
     kubectl apply -f rabbitmq/prometheus.yaml
 
     # Creating Prometheous Pod Monitor
     printf "\nInitializing Prometheous Pod Monitor\n"
     kubectl apply -f rabbitmq/rabbitmq-pod-monitor.yaml
 
+    # Creating Prometheus Namespace
+    printf "\nCreating Prometheous Namespace\n"
+    kubectl create namespace prometheus
+
+    # Installing Cluster Prometheus Monitor
+    printf "\nSetup Cluster Prometheous Monitor\n"
+    helm install prometheus stable/prometheus-operator --namespace prometheus --set prometheusOperator.enabled=false > /dev/null 2>&1
+
     # Creating Grafana Metric Visualizer
     printf "\nInitializing Grafana Visualizer for Prometheous\n"
     kubectl apply -f rabbitmq/grafana.yaml
+
+    # Setting Up Nginx Proxy For Grafana accesses
+    printf "\nInitializing Nginx proxy For Grafana Access\n"
+    kubectl apply -f rabbitmq/nginx.yaml
 
     printf "Waiting For Load Balancing IP...\n"
     x=0
@@ -75,19 +87,39 @@ if terraform apply -auto-approve; then
             sleep 2
         fi        
     done
+
+    # Waiting for Nginx to be in ready-state
+    printf "\nWaiting for Nginx to become ready...\n"
+    x=0
+    READY="Running"
+    while [ $x -le 0 ]
+    do
+        IS_READY=$(kubectl get pod -l app=nginx | grep Running 2>/dev/null)
+        if [[ "$IS_READY" =~ "$READY" ]]; then
+            PodName=$(kubectl get pod -l app=nginx -o jsonpath="{.items[0].metadata.name}")
+            NodeName=$(kubectl get pods $PodName -o wide --output jsonpath='{.spec.nodeName}')
+            x=$(( $x + 1 ))
+        else
+            sleep 5
+        fi
+    done
     
 else
     printf "\n\nCould not create cluster!\n\n"
     exit 1
 fi
-printf "RabbitMQ LB IP: $LB_IP (ports 5672 and 15672)\n"
+printf "\nRabbitMQ LB IP: $LB_IP (ports 5672 and 15672)\n"
 instance=rabbitmq
 username=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.username}" | base64 --decode)
 password=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.password}" | base64 --decode)
-printf "RabbitMQ Management Username:$username\n"
-printf "RabbitMQ Management Password:$password\n"
+printf "RabbitMQ Management Username: $username\n"
+printf "RabbitMQ Management Password: $password\n"
 
-printf "Grafana NodePort: 30009 with Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
+printf "\nGrafana Node: $NodeName\n"
+printf "Grafana For System Monitoring On 30000 (user: admin, password: prom-operator\n"
+printf "Grafana For Message Queue Monitoring On 30001 (user/password: admin) \nwith Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
+
+#printf "Grafana NodePort: 30009 with Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
 
 printf "\n\nCluster successfully created!\n\n"
 

@@ -46,18 +46,30 @@ if terraform apply -auto-approve; then
     printf "\nInitializing Prometheous Rules\n"
     kubectl apply -f kafka/prometheus-rules.yaml -n kafka
 
-    # Creating Prometheous Exporter
-    printf "\nInitializing Prometheous Exporter\n"
+    # Creating Prometheous Prometheous Instance For Kafka
+    printf "\nInitializing Prometheous Instance For Kafka\n"
     kubectl apply -f kafka/prometheus.yaml -n kafka
+
+    # Creating Prometheus Namespace
+    printf "\nCreating Prometheous Namespace\n"
+    kubectl create namespace prometheus
+
+    # Installing Cluster Prometheus Monitor
+    printf "\nSetup Cluster Prometheous Monitor\n"
+    helm install prometheus stable/prometheus-operator --namespace prometheus --set prometheusOperator.enabled=false > /dev/null 2>&1
 
     # Creating Grafana Metric Visualizer
     printf "\nInitializing Grafana Visualizer for Prometheous\n"
     kubectl apply -f kafka/grafana.yaml -n kafka
 
+    # Setting Up Nginx Proxy For Grafana accesses
+    printf "\nInitializing Nginx proxy For Grafana Access\n"
+    kubectl apply -f kafka/nginx.yaml
+
     sleep 2
 
     # Waiting for Kafka Instances to be in ready-state
-    printf "Waiting for Instance(s) to become ready...\n"
+    printf "\nWaiting for Instance(s) to become ready...\n"
     x=0
     READY="Running"
     while [ $x -le 0 ]
@@ -83,26 +95,32 @@ if terraform apply -auto-approve; then
         fi        
     done
 
-    # Waits For Grafana LoadBalancer
-    printf "\nWaiting For Grafana Load Balancing IP...\n"
+    # Waiting for Nginx to be in ready-state
+    printf "\nWaiting for Nginx to become ready...\n"
     x=0
+    READY="Running"
     while [ $x -le 0 ]
     do
-        GRAFANA_LB_IP=$(kubectl get services grafana --namespace kafka --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-        if [[ ${#GRAFANA_LB_IP} -gt 0 ]]; then
+        IS_READY=$(kubectl get pod -l app=nginx | grep Running 2>/dev/null)
+        if [[ "$IS_READY" =~ "$READY" ]]; then
+            PodName=$(kubectl get pod -l app=nginx -o jsonpath="{.items[0].metadata.name}")
+            NodeName=$(kubectl get pods $PodName -o wide --output jsonpath='{.spec.nodeName}')
             x=$(( $x + 1 ))
         else
-            sleep 2
-        fi        
+            sleep 5
+        fi
     done
 else
     printf "\n\nCould not create cluster!\n\n"
     exit 1
 fi
 
-printf "Kafka LB IP: $LB_IP (external port 9094)\n"
-printf "Grafana LB IP: $GRAFANA_LB_IP (external port 3000)\n"
-printf "Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
+printf "\nKafka LB IP: $LB_IP (external port 9094)\n"
+#printf "Grafana LB IP: $GRAFANA_LB_IP (external port 3000)\n"
+
+printf "Grafana Node: $NodeName\n"
+printf "Grafana For System Monitoring On 30000 (user: admin, password: prom-operator\n"
+printf "Grafana For Message Queue Monitoring On 30001 (user/password: admin) \nwith Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
 
 
 

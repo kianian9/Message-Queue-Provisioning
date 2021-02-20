@@ -31,3 +31,14 @@ http://prometheus-operated:9090/
 4) kubectl apply -f rabbitmq/prometheus-service.yaml (Kanske kan skippas..)
 5) kubectl apply -f rabbitmq/rabbitmq-pod-monitor.yaml
 5) kubectl apply -f rabbitmq/grafana.yaml
+
+
+https://www.magalix.com/blog/monitoring-of-kubernetes-cluster-through-prometheus-and-grafana
+
+helm install prometheus stable/prometheus-operator --namespace prometheus --set prometheusOperator.enabled=false
+helm install prometheus stable/prometheus-operator --namespace prometheus --set prometheusOperator.enabled=false > /dev/null 2>&1
+https://stackoverflow.com/questions/65145328/multiple-prometheus-instances-with-single-prometheus-operator
+
+TODO:
+    * Get the node that runs the nginx node and display it..
+    * Create the nginx pod before other pods (for cluster-ip reservation)

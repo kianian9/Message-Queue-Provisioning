@@ -1,24 +1,10 @@
-#apiVersion: monitoring.coreos.com/v1
-#kind: ServiceMonitor
-#metadata:
-#  name: prometheus-self
-#  labels:
-#    app: prometheus
-#spec:
-#  endpoints:
-#  - interval: 30s
-#    port: web
-#  selector:
-#    matchLabels:
-#      app: prometheus
----
-
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: rabbitmq
   labels:
     app: prometheus
+  namespace: default
 spec:
   podMetricsEndpoints:
   - interval: 15s
