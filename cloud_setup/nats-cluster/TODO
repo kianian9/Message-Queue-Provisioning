@@ -29,3 +29,52 @@ The working one is stan directory:
     
     10) The Prometheus Web Monitoring program runs on port 9090:
         Uses nginx for exposing the service to one of the nodes (NodePort) right now, later use LoadBalancer
+
+
+
+http://prometheus-operated:9090/
+
+    kubectl create namespace nats
+
+    kubectl apply -f stan/nats-instance.yaml -n nats
+
+    kubectl apply -f stan/stan-instance.yaml -n nats
+
+    kubectl apply -f stan/nats-operator1.yaml -n nats
+
+    kubectl apply -f stan/nats-operator2.yaml -n nats
+
+    kubectl apply -f stan/prometheus-operator.yaml -n nats
+
+    kubectl apply -f stan/nats-cluster.yaml -n nats
+
+    kubectl apply -f stan/prometheus-rbac.yaml -n nats
+
+    kubectl apply -f stan/prometheus-instance.yaml -n nats
+
+    kubectl apply -f stan/service-monitor.yaml -n nats
+
+    kubectl apply -f stan/stan_lb.yaml -n nats
+
+
+    
+
+    kubectl delete -f stan/stan_lb.yaml -n nats
+
+    kubectl delete -f stan/service-monitor.yaml -n nats
+
+    kubectl delete -f stan/prometheus-instance.yaml -n nats
+    
+    kubectl delete -f stan/prometheus-rbac.yaml -n nats
+
+    kubectl delete -f stan/nats-cluster.yaml -n nats
+
+    kubectl delete -f stan/prometheus-operator.yaml -n nats
+
+    kubectl delete -f stan/nats-operator2.yaml -n nats
+
+    kubectl delete -f stan/nats-operator1.yaml -n nats
+
+    kubectl delete -f stan/stan-instance.yaml -n nats
+
+    kubectl delete -f stan/nats-instance.yaml -n nats

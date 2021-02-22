@@ -9,3 +9,10 @@ spec:
     enableMetrics: true
     metricsImage: "synadia/prometheus-nats-exporter"
     metricsImageTag: "0.3.0"
+
+    #enableClientsHostPort: true
+    #advertiseExternalIP: true
+
+  template:
+    spec:
+      serviceAccountName: "nats-server"

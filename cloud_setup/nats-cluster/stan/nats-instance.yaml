@@ -11,9 +11,9 @@ data:
     cluster {
       port: 6222
       routes [
-        nats://nats-0.nats.default.svc:6222
-        nats://nats-1.nats.default.svc:6222
-        nats://nats-2.nats.default.svc:6222
+        nats://nats-0.nats.nats.svc:6222
+        nats://nats-1.nats.nats.svc:6222
+        nats://nats-2.nats.nats.svc:6222
       ]
 
       cluster_advertise: $CLUSTER_ADVERTISE
@@ -54,6 +54,7 @@ metadata:
   name: nats
   labels:
     app: nats
+    nats-group: nats-group
 spec:
   selector:
     matchLabels:
