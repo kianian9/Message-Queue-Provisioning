@@ -34,47 +34,15 @@ The working one is stan directory:
 
 http://prometheus-operated:9090/
 
-    kubectl create namespace nats
-
-    kubectl apply -f stan/nats-instance.yaml -n nats
-
-    kubectl apply -f stan/stan-instance.yaml -n nats
-
-    kubectl apply -f stan/nats-operator1.yaml -n nats
-
-    kubectl apply -f stan/nats-operator2.yaml -n nats
-
-    kubectl apply -f stan/prometheus-operator.yaml -n nats
-
-    kubectl apply -f stan/nats-cluster.yaml -n nats
-
-    kubectl apply -f stan/prometheus-rbac.yaml -n nats
-
-    kubectl apply -f stan/prometheus-instance.yaml -n nats
-
-    kubectl apply -f stan/service-monitor.yaml -n nats
-
-    kubectl apply -f stan/stan_lb.yaml -n nats
-
-
-    
-
-    kubectl delete -f stan/stan_lb.yaml -n nats
-
-    kubectl delete -f stan/service-monitor.yaml -n nats
-
-    kubectl delete -f stan/prometheus-instance.yaml -n nats
-    
-    kubectl delete -f stan/prometheus-rbac.yaml -n nats
-
-    kubectl delete -f stan/nats-cluster.yaml -n nats
-
-    kubectl delete -f stan/prometheus-operator.yaml -n nats
-
-    kubectl delete -f stan/nats-operator2.yaml -n nats
-
-    kubectl delete -f stan/nats-operator1.yaml -n nats
-
-    kubectl delete -f stan/stan-instance.yaml -n nats
-
-    kubectl delete -f stan/nats-instance.yaml -n nats
+Setup Order:
+1) kubectl apply -f stan_helm/prometheus-operator-deployment.yaml -n nats
+2) kubectl apply -f stan_helm/nats-operator1.yaml -n nats
+3) kubectl apply -f stan_helm/nats-operator2.yaml -n nats
+4) kubectl apply -f stan_helm/prometheus-rbac.yaml -n nats
+5) kubectl apply -f stan_helm/nats-cluster.yaml -n nats
+6) kubectl apply -f stan_helm/prometheus-operator.yaml -n nats
+7) kubectl apply -f stan_helm/prometheus-instance.yaml -n nats
+8) helm install -f stan_helm/nats/values.yaml -n nats my-nats ./stan_helm/nats/
+9) helm install -f stan_helm/stan/values.yaml -n nats my-stan ./stan_helm/stan/
+10) kubectl apply -f stan/grafana.yaml -n nats
+11) kubectl apply -f stan_helm/nginx.yaml

@@ -17,7 +17,7 @@ public class StanProducer {
     public static void main(String[] args) {
         Random random = new Random();
         // LB IP
-        String lbIP = "35.228.104.216";
+        String lbIP = "35.228.228.86";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
@@ -73,13 +73,18 @@ public class StanProducer {
         // This simple synchronous publish API blocks until an acknowledgement
         // is returned from the server.  If no exception is thrown, the message
         // has been stored in NATS streaming.
-        String msg = "Hello World " + random.nextInt();
-        try {
-            sc.publish("ny", msg.getBytes());
-        } catch (IOException | InterruptedException | TimeoutException e) {
-            e.printStackTrace();
+        for (int i = 0; i < 100000; i++) {
+
+
+            String msg = "Hello World: " + i;
+            try {
+                sc.publish("jadete", msg.getBytes());
+            } catch (IOException | InterruptedException | TimeoutException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Has published message: " + msg);
         }
-        System.out.println("Has published message: " + msg);
+
         try {
             sc.close();
             nc.close();

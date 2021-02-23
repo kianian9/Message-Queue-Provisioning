@@ -22,7 +22,7 @@ public class StanConsumer_Producer {
     public static void main(String[] args) throws IOException {
         Random random = new Random();
         // LB IP
-        String lbIP = "35.228.104.216";
+        String lbIP = "35.228.243.110";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
@@ -30,7 +30,7 @@ public class StanConsumer_Producer {
         String clusterID = "stan";
         String clientID = "hejhej";
 
-        String subject = "te";
+        String subject = "jadete";
 
         Connection nc = null;
         try {
