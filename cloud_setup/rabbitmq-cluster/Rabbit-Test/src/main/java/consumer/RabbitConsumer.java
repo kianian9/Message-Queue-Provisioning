@@ -9,9 +9,9 @@ import java.util.Map;
 public class RabbitConsumer {
 
     private static final String TASK_QUEUE_NAME = "task_queue";
-    private static String RABBIT_HOST = "35.228.201.31";
-    private static String RABBIT_USER = "FOfpGF5xwneOnVP_jXB00XSqo0QaxeSh";
-    private static String RABBIT_PASSWORD = "gC0ylHgwBlrOEdDldyEVSownROf4XXYO";
+    private static String RABBIT_HOST = "35.228.188.246";
+    private static String RABBIT_USER = "3KsEAdMVfCAqXB9QLsF-AtoxnC2Nz4GL";
+    private static String RABBIT_PASSWORD = "7aYo7YHuutAne0P7ybKgGYlGpGpIphw6";
 
     public static void main(String[] argv) {
         ConnectionFactory factory = new ConnectionFactory();
@@ -31,7 +31,10 @@ public class RabbitConsumer {
 
                 Map<String, Object> arguments = new HashMap<>();
                 arguments.put("x-queue-type", "quorum");
-                channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, arguments);
+                //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, arguments);
+                channel.exchangeDeclare("logs", "fanout");
+                String queueName = channel.queueDeclare().getQueue();
+                channel.queueBind(queueName, "logs", "", arguments);
                 //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
                 System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
@@ -45,12 +48,13 @@ public class RabbitConsumer {
                         doWork(message);
                     } finally {
                         System.out.println(" [x] Done");
-                        channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+                        //channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
                     }
                 };
 
 
-                channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> {});
+                //channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> {});
+                channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
 
                 while(connection.isOpen()) {
                     Thread.sleep(1);

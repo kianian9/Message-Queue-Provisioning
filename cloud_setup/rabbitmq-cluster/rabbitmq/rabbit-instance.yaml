@@ -4,13 +4,18 @@ metadata:
   name: rabbitmq
 spec:
   # TODO: Change this corresponding to machine nodes
+  # Temporary solution: Setting the limits to a very high value for removing benchmark restrictions
+  # See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
   resources:
     requests:
       cpu: 150m
       memory: 2Gi
     limits:
-      cpu: 500m
-      memory: 2Gi
+      #cpu: 500m
+      cpu: 100000m
+      #memory: 2Gi
+      memory: 100Gi
+  # Change this according to horiziontal scaling
   replicas: 3
   persistence:
     storageClassName: rabbit-sc

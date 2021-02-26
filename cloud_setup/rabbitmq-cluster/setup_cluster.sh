@@ -23,7 +23,7 @@ if terraform apply -auto-approve; then
 
     # Creating RabbitMQ Instances(Brokers)
     printf "\nInitializing RabbitMQ Instance(s)\n"
-    kubectl apply -f rabbitmq/rabbit-instance.yaml
+    kubectl apply -f rabbitmq/rabbit-instance.yaml -n rabbitmq-system
     
     # Waiting for RabbitMQ Instances to be in ready-state
     printf "Waiting for Instance(s) to become ready...\n"
@@ -31,7 +31,7 @@ if terraform apply -auto-approve; then
     READY="Running"
     while [ $x -le 0 ]
     do
-        IS_READY=$(kubectl get pods rabbitmq-server-2 -o jsonpath="Status: {.status.phase}" 2>/dev/null)
+        IS_READY=$(kubectl get pods rabbitmq-server-2 -n rabbitmq-system -o jsonpath="Status: {.status.phase}" 2>/dev/null)
 
         if [[ "$IS_READY" =~ "$READY" ]]; then
             x=$(( $x + 1 ))
@@ -42,23 +42,23 @@ if terraform apply -auto-approve; then
 
     # Setups RabbitMQ Cluster LoadBalancer
     printf "\nSetups RabbitMQ Cluster LoadBalancer\n"
-    kubectl apply -f rabbitmq/rabbit_lb.yaml
+    kubectl apply -f rabbitmq/rabbit_lb.yaml -n rabbitmq-system
 
     # Creating Prometheous Operator
     printf "\nInitializing Prometheous Operator\n"
-    kubectl apply -f rabbitmq/prometheus-operator-deployment.yaml
+    kubectl apply -f rabbitmq/prometheus-operator-deployment.yaml -n rabbitmq-system
 
     # Creating Prometheus Roles
     printf "\nSetup Prometheous Roles\n"
-    kubectl apply -f rabbitmq/prometheus-roles.yaml
+    kubectl apply -f rabbitmq/prometheus-roles.yaml -n rabbitmq-system
 
     # Creating Prometheous Instance For RabbitMQ
     printf "\nInitializing Prometheous Instance For RabbitMQ\n"
-    kubectl apply -f rabbitmq/prometheus.yaml
+    kubectl apply -f rabbitmq/prometheus.yaml -n rabbitmq-system
 
     # Creating Prometheous Pod Monitor
     printf "\nInitializing Prometheous Pod Monitor\n"
-    kubectl apply -f rabbitmq/rabbitmq-pod-monitor.yaml
+    kubectl apply -f rabbitmq/rabbitmq-pod-monitor.yaml -n rabbitmq-system
 
     # Creating Prometheus Namespace
     printf "\nCreating Prometheous Namespace\n"
@@ -70,7 +70,7 @@ if terraform apply -auto-approve; then
 
     # Creating Grafana Metric Visualizer
     printf "\nInitializing Grafana Visualizer for Prometheous\n"
-    kubectl apply -f rabbitmq/grafana.yaml
+    kubectl apply -f rabbitmq/grafana.yaml -n rabbitmq-system
 
     # Setting Up Nginx Proxy For Grafana accesses
     printf "\nInitializing Nginx proxy For Grafana Access\n"
@@ -80,7 +80,7 @@ if terraform apply -auto-approve; then
     x=0
     while [ $x -le 0 ]
     do
-        LB_IP=$(kubectl get services rabbit-http-lb --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        LB_IP=$(kubectl get services rabbit-http-lb -n rabbitmq-system --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
         if [[ ${#LB_IP} -gt 0 ]]; then
             x=$(( $x + 1 ))
         else
@@ -110,8 +110,8 @@ else
 fi
 printf "\nRabbitMQ LB IP: $LB_IP (ports 5672 and 15672)\n"
 instance=rabbitmq
-username=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.username}" | base64 --decode)
-password=$(kubectl get secret ${instance}-default-user -o jsonpath="{.data.password}" | base64 --decode)
+username=$(kubectl get secret ${instance}-default-user -n rabbitmq-system -o jsonpath="{.data.username}" | base64 --decode)
+password=$(kubectl get secret ${instance}-default-user -n rabbitmq-system -o jsonpath="{.data.password}" | base64 --decode)
 printf "RabbitMQ Management Username: $username\n"
 printf "RabbitMQ Management Password: $password\n"
 

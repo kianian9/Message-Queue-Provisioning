@@ -19,6 +19,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mq-grafana
+  namespace: rabbitmq-system
 spec:
   type: ClusterIP
   clusterIP: 10.247.240.110

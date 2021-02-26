@@ -4,7 +4,6 @@ metadata:
   name: rabbitmq
   labels:
     app: prometheus
-  namespace: default
 spec:
   podMetricsEndpoints:
   - interval: 15s
