@@ -17,7 +17,7 @@ public class StanConsumer {
     // MAY NOT WORK, CHECK StanConsumer_Producer
     public static void main(String[] args) {
         // LB IP
-        String lbIP = "35.228.148.191";
+        String lbIP = "35.228.243.110";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
@@ -27,10 +27,8 @@ public class StanConsumer {
 
         Connection nc = null;
         try {
-            System.out.println(1);
             Options options = new Options.Builder().server(natsServerURL).connectionTimeout(Duration.ofSeconds(10)).reconnectWait(Duration.ofSeconds(1)).build();
             nc = Nats.connect(options);
-            System.out.println(2);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -87,12 +85,12 @@ public class StanConsumer {
 
         // Use a countdown latch to wait for our subscriber to receive the
         // message we published above.
-        final CountDownLatch doneSignal = new CountDownLatch(20);
+        final CountDownLatch doneSignal = new CountDownLatch(100000);
 
         // Simple Async Subscriber that retrieves all available messages.
         Subscription sub = null;
         try {
-            sub = sc.subscribe("ny", new MessageHandler() {
+            sub = sc.subscribe("kian-subject", new MessageHandler() {
                 public void onMessage(Message m) {
                     System.out.printf("Received a message: %s\n", new String(m.getData()));
                     doneSignal.countDown();

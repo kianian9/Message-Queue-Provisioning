@@ -17,7 +17,7 @@ public class StanProducer {
     public static void main(String[] args) {
         Random random = new Random();
         // LB IP
-        String lbIP = "35.228.228.86";
+        String lbIP = "35.228.243.110";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
@@ -78,7 +78,7 @@ public class StanProducer {
 
             String msg = "Hello World: " + i;
             try {
-                sc.publish("jadete", msg.getBytes());
+                sc.publish("kian-subject", msg.getBytes());
             } catch (IOException | InterruptedException | TimeoutException e) {
                 e.printStackTrace();
             }

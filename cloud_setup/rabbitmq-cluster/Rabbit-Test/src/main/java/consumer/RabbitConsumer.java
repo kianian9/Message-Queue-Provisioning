@@ -9,9 +9,9 @@ import java.util.Map;
 public class RabbitConsumer {
 
     private static final String TASK_QUEUE_NAME = "task_queue";
-    private static String RABBIT_HOST = "35.228.188.246";
-    private static String RABBIT_USER = "3KsEAdMVfCAqXB9QLsF-AtoxnC2Nz4GL";
-    private static String RABBIT_PASSWORD = "7aYo7YHuutAne0P7ybKgGYlGpGpIphw6";
+    private static String RABBIT_HOST = "35.228.201.31";
+    private static String RABBIT_USER = "K41fL7PMPbTS9wHqWKu48x1jIZZ4KFyn";
+    private static String RABBIT_PASSWORD = "KnvAC_uTeDDkTG8SLRwUUOsYGVI6Ce-b";
 
     public static void main(String[] argv) {
         ConnectionFactory factory = new ConnectionFactory();

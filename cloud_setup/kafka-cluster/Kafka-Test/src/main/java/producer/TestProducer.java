@@ -11,7 +11,7 @@ public class TestProducer {
 
     public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "35.228.181.254:9094");
+        props.put("bootstrap.servers", "35.228.228.163:9094");
         props.put("acks", "all");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -20,7 +20,7 @@ public class TestProducer {
         Producer<String, String> producer = new KafkaProducer<>(props);
         int i = 0;
         while (true) {
-            producer.send(new ProducerRecord<>("kian", Integer.toString(i), Integer.toString(i)));
+            producer.send(new ProducerRecord<>("kian-subject", Integer.toString(i), Integer.toString(i)));
             Thread.sleep(100);
             i++;
             System.out.println("Sent message: " + i);
