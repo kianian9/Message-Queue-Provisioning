@@ -1,0 +1,13 @@
+TODO:
+    * Fix dashboard with following panels:
+        * Producer throughput panel in messages (msg/sec): sum(rate(nss_server_msgs_in[5m])) by (channel)
+        * Consumer throughput panel in messages (msg/sec): sum(rate(nss_server_msgs_out[5m])) by (channel)
+        * Producer throughput panel in bytes (may not be needed due to existing) (bytes/sec): sum(rate(nss_server_bytes_in[5m])) by (channel)
+        * Consumer throughput panel in bytes (may not be needed due to existing) (bytes/sec): sum(rate(nss_server_bytes_out[5m])) by (channel)
+
+    * May need to turn of preemtiveness - closes nodes sometimes otherwise..
+    * To see available space on a node: sudo df -h | grep /dev/sdb
+    * Need to add NATS Streaming for Flotilla
+    * STAN brokers are given 5 GB SSD right now, max_bytes is therefore set to 5 GB (unlimited didnt work for some reason..)
+    * Limit is not needed for NATS, with 3 broker cluster on medium type, the median producer throughput value was around 45 000 msgs/sec
+    

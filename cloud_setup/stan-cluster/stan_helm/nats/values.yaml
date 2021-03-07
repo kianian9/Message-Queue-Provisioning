@@ -29,6 +29,16 @@ nats:
   pingInterval:
 
   resources: {}
+  #resources:
+  #  requests:
+  #    cpu: 150m
+  #    #memory: 2Gi
+  #    memory: 256Mi
+  #  limits:
+  #    #cpu: 500m
+  #    cpu: 100000m
+  #    #memory: 2Gi
+  #    memory: 100Gi
 
   # Server settings.
   limits:

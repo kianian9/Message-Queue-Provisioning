@@ -88,6 +88,16 @@ affinity: {}
 # Resource requests and limits for primary stan container
 # ref: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 resources: {}
+#resources:
+#  requests:
+#    cpu: 150m
+#    #memory: 2Gi
+#    memory: 256Mi
+#  limits:
+#    #cpu: 500m
+#    cpu: 100000m
+#    #memory: 2Gi
+#    memory: 100Gi
 
 # Readiness probe to determine when nats-streaming is ready
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
@@ -95,7 +105,9 @@ readinessProbe:
   httpGet:
     path: /streaming/serverz
     port: monitor
-  timeoutSeconds: 2
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
 
 # Readiness probe to determine when nats-streaming cluster is ready.
 # Overrides the readinessProbe in case present.
@@ -133,7 +145,11 @@ store:
   #
   # https://docs.nats.io/nats-streaming-server/configuring/cfgfile#store-limits-configuration
   #
-  limits: {}
+  #limits: {}
+  # Unlimited amount of msgs for channel/subject, note, it didn't work with 0 for bytes..
+  limits:
+    max_msgs: 0
+    max_bytes: 5GB
 
   # Enables streaming/partitioning
   # 
@@ -149,7 +165,7 @@ store:
   volume:
     enabled: true
     mount: /data/stan
-    storageSize: 1Gi
+    storageSize: 5Gi
     accessModes: ReadWriteOnce
     storageClass: stan-sc
 

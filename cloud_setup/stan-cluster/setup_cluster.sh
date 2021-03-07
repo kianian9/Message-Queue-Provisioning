@@ -13,8 +13,8 @@ if terraform apply -auto-approve; then
 
     # Setups persistent storage class (CSI Driver)
     printf "\nCreating storage class (CSI-Driver)\n"
-    kubectl apply -f stan_helm/gce_standard_storageclass.yaml
-    #kubectl apply -f stan_helm/gce_ssd_storageclass.yaml
+    #kubectl apply -f stan_helm/gce_standard_storageclass.yaml
+    kubectl apply -f stan_helm/gce_ssd_storageclass.yaml
 
     # Creating NATS namespace
     printf "\nCreating NATS Namespace\n"

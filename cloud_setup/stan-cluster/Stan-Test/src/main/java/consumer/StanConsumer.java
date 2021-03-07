@@ -14,16 +14,16 @@ import java.util.concurrent.TimeoutException;
 
 public class StanConsumer {
 
-    // MAY NOT WORK, CHECK StanConsumer_Producer
     public static void main(String[] args) {
         // LB IP
-        String lbIP = "35.228.243.110";
+        String lbIP = "35.228.243.67";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
         //Connection nc = Nats.connect("nats://myhost:4222");
         String clusterID = "stan";
         String clientID = "consumer";
+        String subject = "kian-subject1";
 
         Connection nc = null;
         try {
@@ -85,12 +85,12 @@ public class StanConsumer {
 
         // Use a countdown latch to wait for our subscriber to receive the
         // message we published above.
-        final CountDownLatch doneSignal = new CountDownLatch(100000);
+        final CountDownLatch doneSignal = new CountDownLatch(100000000);
 
         // Simple Async Subscriber that retrieves all available messages.
         Subscription sub = null;
         try {
-            sub = sc.subscribe("kian-subject", new MessageHandler() {
+            sub = sc.subscribe(subject, new MessageHandler() {
                 public void onMessage(Message m) {
                     System.out.printf("Received a message: %s\n", new String(m.getData()));
                     doneSignal.countDown();
