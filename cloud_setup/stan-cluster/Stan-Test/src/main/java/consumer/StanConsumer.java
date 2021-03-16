@@ -16,7 +16,7 @@ public class StanConsumer {
 
     public static void main(String[] args) {
         // LB IP
-        String lbIP = "35.228.243.67";
+        String lbIP = "35.228.232.112";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";

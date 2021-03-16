@@ -13,8 +13,8 @@ if terraform apply -auto-approve; then
 
     # Setups persistent storage class (CSI Driver)
     printf "\nCreating storage class (CSI-Driver)\n"
-    kubectl apply -f kafka/gce_standard_storageclass.yaml
-    #kubectl apply -f kafka/gce_ssd_storageclass.yaml
+    #kubectl apply -f kafka/gce_standard_storageclass.yaml
+    kubectl apply -f kafka/gce_ssd_storageclass.yaml
 
     # Creating Kafka Namespace (recommended and didn't work on default-NS)
     printf "\nCreating Kafka Namespace\n"
@@ -67,7 +67,6 @@ if terraform apply -auto-approve; then
     kubectl apply -f kafka/nginx.yaml
 
     sleep 2
-
     # Waiting for Kafka Instances to be in ready-state
     printf "\nWaiting for Instance(s) to become ready...\n"
     x=0

@@ -4,15 +4,17 @@ import com.rabbitmq.client.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 public class RabbitConsumer {
 
     private static final String TASK_QUEUE_NAME = "task_queue";
-    private static String RABBIT_HOST = "35.228.201.31";
-    private static String RABBIT_USER = "K41fL7PMPbTS9wHqWKu48x1jIZZ4KFyn";
-    private static String RABBIT_PASSWORD = "KnvAC_uTeDDkTG8SLRwUUOsYGVI6Ce-b";
+    private static String RABBIT_HOST = "35.228.67.73";
+    private static String RABBIT_USER = "qsMAEhR5lgFlv9lS1vjPJgQgyWE3pSdM";
+    private static String RABBIT_PASSWORD = "Bt-s2Pzglfss-tq3HKhC_XLKjTx-qG34";
 
+    private static String queueName;
     public static void main(String[] argv) {
         ConnectionFactory factory = new ConnectionFactory();
         //System.err.println(System.getenv("RABBIT_HOST"));
@@ -31,10 +33,11 @@ public class RabbitConsumer {
 
                 Map<String, Object> arguments = new HashMap<>();
                 arguments.put("x-queue-type", "quorum");
-                //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, arguments);
+                queueName = UUID.randomUUID().toString().replace("-", "");
+                channel.queueDeclare(queueName, true, false, false, arguments);
                 channel.exchangeDeclare("logs", "fanout");
-                String queueName = channel.queueDeclare().getQueue();
-                channel.queueBind(queueName, "logs", "", arguments);
+                //String queueName = channel.queueDeclare().getQueue();
+                channel.queueBind(queueName, "logs", "");
                 //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
                 System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 

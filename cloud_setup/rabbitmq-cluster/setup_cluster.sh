@@ -13,8 +13,8 @@ if terraform apply -auto-approve; then
     
     # Setups persistent storage class (CSI Driver)
     printf "\nCreating storage class (CSI-Driver)\n"
-    kubectl apply -f rabbitmq/gce_standard_storageclass.yaml
-    #kubectl apply -f rabbitmq/gce_ssd_storageclass.yaml
+    #kubectl apply -f rabbitmq/gce_standard_storageclass.yaml
+    kubectl apply -f rabbitmq/gce_ssd_storageclass.yaml
 
     # Installs RabbitMQ Cluster Operator (version v1.4.0 latest at the moment)
     printf "\nInstalling RabbitMQ Cluster Operator\n"

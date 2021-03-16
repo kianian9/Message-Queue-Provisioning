@@ -6,6 +6,21 @@ spec:
   kafka:
     version: 2.7.0
     replicas: 3
+
+    # Used for limiting one broker to exactly one node
+    template:
+      pod:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: strimzi.io/name
+                  operator: In
+                  values:
+                  - kafka-cluster-kafka
+              topologyKey: "kubernetes.io/hostname"
+    
     listeners:
       - name: plain
         port: 9092
@@ -20,11 +35,14 @@ spec:
         type: loadbalancer
         tls: false
     config:
+      num.partitions: 3
+      default.replication.factor: 3
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
       transaction.state.log.min.isr: 2
       log.message.format.version: "2.7"
       inter.broker.protocol.version: "2.7"
+
     storage:
       # JBOD increases data storage for Kafka Brokers and improves performance
       type: jbod
@@ -32,7 +50,7 @@ spec:
       - id: 0
         class: kafka-sc
         type: persistent-claim
-        size: 10Gi
+        size: 5Gi
         deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
@@ -72,10 +90,25 @@ spec:
       timeoutSeconds: 5
   zookeeper:
     replicas: 3
+
+    # Used for limiting one broker to exactly one node
+    template:
+      pod:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: strimzi.io/name
+                  operator: In
+                  values:
+                  - kafka-cluster-zookeeper
+              topologyKey: "kubernetes.io/hostname"
+
     storage:
       class: kafka-sc
       type: persistent-claim
-      size: 10Gi
+      size: 5Gi
       deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter

@@ -17,7 +17,7 @@ public class StanProducer {
 
     public static void main(String[] args) {
         // LB IP
-        String lbIP = "35.228.243.67";
+        String lbIP = "35.228.243.110";
 
         // NATS Core Server URL For Connection To NATS Core
         String natsServerURL = "nats://" + lbIP +":4222";
@@ -120,7 +120,7 @@ public class StanProducer {
             //System.out.println("Has published message: " + msg);
             long time = (timestamp2 - timestamp1) / 1000;
             if (time >= 1) {
-                System.out.println("Pub msgs: " + (i - nrMessages));
+                System.out.println("Pub msgs per sec: " + (i - nrMessages));
                 nrMessages = i;
                 timestamp1 = timestamp2;
                 System.out.println("Msg Not Received: " + (i - nc.getStatistics().getInMsgs()));

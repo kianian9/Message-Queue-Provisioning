@@ -32,6 +32,7 @@ if terraform apply -auto-approve; then
     kubectl apply -f stan_helm/nats-operator2.yaml -n nats
 
     printf "\nWaiting for NATS Operator to become ready...\n"
+    sleep 2
     x=0
     READY="Running"
     while [ $x -le 0 ]
