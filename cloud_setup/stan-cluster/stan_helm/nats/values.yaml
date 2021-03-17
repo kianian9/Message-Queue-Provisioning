@@ -126,19 +126,19 @@ securityContext: null
 
 # Affinity for pod assignment
 # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
-affinity: {}
+#affinity: {}
 
 # Used for limiting one broker to exactly one node
-#affinity:
-#  podAntiAffinity:
-#    requiredDuringSchedulingIgnoredDuringExecution:
-#    - labelSelector:
-#        matchExpressions:
-#        - key: app
-#          operator: In
-#          values:
-#          - my-stan
-#      topologyKey: "kubernetes.io/hostname"
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchExpressions:
+        - key: app.kubernetes.io/instance
+          operator: In
+          values:
+          - my-nats
+      topologyKey: "kubernetes.io/hostname"
 
 # Service topology
 # ref: https://kubernetes.io/docs/concepts/services-networking/service-topology/
@@ -154,7 +154,7 @@ statefulSetAnnotations: {}
 
 cluster:
   enabled: true
-  # No PodAntiAffinity defined, it is possible to create more than nr nodes brokers
+  # PodAntiAffinity defined to be one per node
   replicas: 3
   noAdvertise: true
 

@@ -115,7 +115,6 @@ else
 fi
 
 printf "\nKafka LB IP: $LB_IP (external port 9094)\n"
-#printf "Grafana LB IP: $GRAFANA_LB_IP (external port 3000)\n"
 
 printf "Grafana Node: $NodeName\n"
 printf "Grafana For System Monitoring On 30000 (user: admin, password: prom-operator\n"
