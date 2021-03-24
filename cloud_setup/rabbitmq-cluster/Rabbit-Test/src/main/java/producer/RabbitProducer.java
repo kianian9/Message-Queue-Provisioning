@@ -9,9 +9,10 @@ import java.util.UUID;
 
 public class RabbitProducer {
     private static final String TASK_QUEUE_NAME = "task_queue";
-    private static String RABBIT_HOST = "35.228.67.73";
-    private static String RABBIT_USER = "qsMAEhR5lgFlv9lS1vjPJgQgyWE3pSdM";
-    private static String RABBIT_PASSWORD = "Bt-s2Pzglfss-tq3HKhC_XLKjTx-qG34";
+    private static String RABBIT_HOST = "35.228.157.201";
+    private static String RABBIT_USER = "MOXF3ljBPn3JWvt_4L_DZwmFKgt6JSyM";
+    private static String RABBIT_PASSWORD = "ySA4T7oGGdc81J0vbMrxczYLqoSpCJOF";
+    private static String exchange = "fanout";
 
     private static String queueName;
     public static void main(String[] argv) {
@@ -38,19 +39,21 @@ public class RabbitProducer {
                 //System.out.println(1);
                 //channel.queueDeclare(queueName, true, false, false, arguments);
                 //System.out.println(2);
-                channel.exchangeDeclare("logs", "fanout");
+                channel.exchangeDeclare(exchange, "fanout");
                 //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
 
 
 
                 long timestamp1 = System.currentTimeMillis();
                 int nrMessages = 0;
-                for (int i = 0; i < 100000000; i++) {
+                byte[] c = new byte[1000];
+                for (int i = 0; i < 500000; i++) {
                     long timestamp2 = System.currentTimeMillis();
-                    String message = "Test - " + i;
-                    channel.basicPublish("logs", "",
+                    //String message = "Test - " + i;
+                    String s = new String(c, StandardCharsets.UTF_8);
+                    channel.basicPublish(exchange, "",
                             null,
-                            message.getBytes(StandardCharsets.UTF_8));
+                            s.getBytes(StandardCharsets.UTF_8));
                     //System.out.println(" [x] Sent '" + message + "'");
                     long time = (timestamp2 - timestamp1) / 1000;
                     if (time >= 1) {

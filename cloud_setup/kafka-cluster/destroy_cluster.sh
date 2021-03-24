@@ -1,7 +1,34 @@
 #!/bin/bash
 
-gcloud config set project kafka-304409
+usage() { echo "Usage: $0 [-projectID <string>]" 1>&2; exit 1; }
 
+# Checking number arguments
+if [[ $# -ne 2 ]]; then
+    usage
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+            -projectID)
+                shift
+                PROJECT_ID=$1
+                shift
+                ;;
+            *)
+            echo "$1 is not a recognized flag!"
+            usage
+            ;;
+    esac
+done
+
+# Checking for valid project id
+FOUND_PROJECT_ID=$(gcloud projects describe $PROJECT_ID 2>&1)
+if [ $? -ne 0 ]; then
+    printf "\nThe given project id wasn't found!\n">&2; exit 1
+fi
+gcloud config set project $PROJECT_ID
+
+cd provisioning
 # Removing Kafka cluster with external Load Balancers
 kubectl delete -f kafka/kafka-instance.yaml --namespace kafka
 
@@ -21,10 +48,9 @@ for rule in $FW_RULES; do
     fi
 done
 
-# Will destroy cluster and remove any disks in GCE
-if ! terraform destroy -auto-approve; then
-    printf "\n\nCluster could not be destroyed!\n\n"
-    exit 1
+# Will destroy cluster and remove any added disks in GCE
+if ! terraform destroy -var "project_id=" -var "node_count=" -var "machine_type=" -auto-approve; then
+    printf "\n\nCluster could not be destroyed!\n\n"; exit 1
 else
     DISKS=$(gcloud compute disks list --format="value(name)")
     for disk in $DISKS; do

@@ -1,0 +1,31 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Add an apt signing key for Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add apt repository for stable Docker version
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install docker and its dependecies
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - docker-ce=5:19.03.10~3-0~ubuntu-focal
+      notify:
+        - docker status
+
+    - name: Pulling latest Masih Benchmarking Tool Docker image
+      command: docker pull kianian9/masih:latest
+
+  handlers:
+    - name: docker status
+      service: name=docker state=started

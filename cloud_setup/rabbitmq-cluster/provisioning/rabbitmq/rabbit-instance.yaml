@@ -1,0 +1,27 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+spec:
+  # Used for limiting one broker to exactly one node
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - rabbitmq
+        topologyKey: "kubernetes.io/hostname"
+
+  # Used for removing limitations (as for Kafka and STAN)
+  resources: {}
+  # NOTE: NR_NODES used as placeholder!
+  replicas: NR_NODES
+  persistence:
+    storageClassName: rabbit-sc
+    storage: 20Gi
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_federation

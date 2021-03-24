@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1616430700328,
+  "id": 7,
+  "iteration": 1616498235874,
   "links": [],
   "panels": [
     {
@@ -335,7 +335,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Not 100% accurate...",
+      "description": "Need manual control due to no available query...",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -378,9 +378,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m])) /\n\n(sum(irate(kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m])) / sum(irate(kafka_server_brokertopicmetrics_messagesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m])))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m])) /\n100\n",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "msgs/sec",
           "refId": "A"
         }
       ],
@@ -388,7 +388,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Kafka: Producer Message Throughput (Msgs/Sec)",
+      "title": "Kafka: Consumer Message Throughput (Msgs/Sec)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1218,9 +1218,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "kafka",
-          "value": "kafka"
+          "text": "None",
+          "value": ""
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -1245,9 +1246,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "kafka-cluster",
-          "value": "kafka-cluster"
+          "text": "None",
+          "value": ""
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -1357,10 +1359,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "rabbitmq-system",
+          "value": "rabbitmq-system"
         },
         "datasource": "Prometheus",
         "definition": "label_values(rabbitmq_identity_info, namespace)",
@@ -1385,10 +1386,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "rabbitmq",
+          "value": "rabbitmq"
         },
         "datasource": "Prometheus",
         "definition": "label_values(rabbitmq_identity_info{namespace=\"$namespace\"}, rabbitmq_cluster)",
@@ -1444,5 +1444,5 @@
   "timezone": "",
   "title": "Masih - MQ Dashboards",
   "uid": "86cc98e66c294b299b37102f0cc74ead",
-  "version": 1
+  "version": 2
 }

@@ -10,9 +10,10 @@ import java.util.UUID;
 public class RabbitConsumer {
 
     private static final String TASK_QUEUE_NAME = "task_queue";
-    private static String RABBIT_HOST = "35.228.67.73";
-    private static String RABBIT_USER = "qsMAEhR5lgFlv9lS1vjPJgQgyWE3pSdM";
-    private static String RABBIT_PASSWORD = "Bt-s2Pzglfss-tq3HKhC_XLKjTx-qG34";
+    private static String RABBIT_HOST = "35.228.157.201";
+    private static String RABBIT_USER = "MOXF3ljBPn3JWvt_4L_DZwmFKgt6JSyM";
+    private static String RABBIT_PASSWORD = "ySA4T7oGGdc81J0vbMrxczYLqoSpCJOF";
+    private static String exchange = "fanout";
 
     private static String queueName;
     public static void main(String[] argv) {
@@ -23,6 +24,7 @@ public class RabbitConsumer {
         factory.setHost(RABBIT_HOST);
         factory.setUsername(RABBIT_USER);
         factory.setPassword(RABBIT_PASSWORD);
+
 
         while(true) {
             final Connection connection;
@@ -35,18 +37,18 @@ public class RabbitConsumer {
                 arguments.put("x-queue-type", "quorum");
                 queueName = UUID.randomUUID().toString().replace("-", "");
                 channel.queueDeclare(queueName, true, false, false, arguments);
-                channel.exchangeDeclare("logs", "fanout");
+                channel.exchangeDeclare(exchange, "fanout");
                 //String queueName = channel.queueDeclare().getQueue();
-                channel.queueBind(queueName, "logs", "");
+                channel.queueBind(queueName, exchange, "");
                 //channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
                 System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-                channel.basicQos(1);
+                //channel.basicQos(1);
 
                 DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                     String message = new String(delivery.getBody(), "UTF-8");
 
-                    System.out.println(" [x] Received '" + message + "'");
+                    System.out.println(" [x] Received Nr Bytes: '" + message.getBytes().length + "'");
                     try {
                         doWork(message);
                     } finally {
