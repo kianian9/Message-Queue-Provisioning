@@ -172,9 +172,9 @@ printf "\nKafka LB IP: $LB_IP (external port 9094)\n"
 
 NodeNames=$(kubectl get nodes --selector=kubernetes.io/role!=master -o \
     jsonpath={.items[*].status.addresses[?\(@.type==\"ExternalIP\"\)].address})
-printf "Grafana Accessible From Nodes: $NodeNames\n"
+printf "\nGrafana Accessible From Nodes: $NodeNames\n"
 printf "Grafana For System Monitoring On 30000 (user: admin, password: prom-operator)\n"
-printf "Grafana For Message Queue Monitoring On 30001 (user/password: admin) \n with Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
+printf "Grafana For Message Queue Monitoring On 30001 (user/password: admin) \nwith Prometheus Operator ClusterIP: http://prometheus-operated:9090/\n"
 
 
 end=`date +%s`

@@ -41,6 +41,7 @@ spec:
       offsets.topic.replication.factor: NR_NODES
       transaction.state.log.replication.factor: NR_NODES
       transaction.state.log.min.isr: MIN_NODES
+      auto.create.topics.enable: "true"
       log.message.format.version: "2.7"
       inter.broker.protocol.version: "2.7"
 

@@ -13,13 +13,15 @@
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
         state: present
 
-    - name: Install docker and its dependecies
+    - name: Install Docker and its dependecies
       apt:
         name: "{{ packages }}"
         state: present
       vars:
         packages:
-          - docker-ce=5:19.03.10~3-0~ubuntu-focal
+          - docker-ce=5:20.10.0~3-0~ubuntu-focal
+          - docker-ce-cli=5:20.10.0~3-0~ubuntu-focal
+          - containerd.io
       notify:
         - docker status
 

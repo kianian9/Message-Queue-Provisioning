@@ -34,6 +34,11 @@ while test $# -gt 0; do
                 else
                     MIN_NODES=$((NR_NODES-1))
                 fi
+                if [[ $NR_NODES -gt 2 ]] ; then
+                    CLUSTERED="true"
+                else
+                    CLUSTERED="false"
+                fi
                 shift
                 ;;
             -machineType)
@@ -142,7 +147,6 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
     printf "\nInstalling NATS Cluster Through Helm Chart\n"
     cat stan_helm/nats/values.yaml | sed "s/NR_NODES/$NR_NODES/g" \
         | helm install -f - -n nats my-nats ./stan_helm/nats/
-    #helm install -f stan_helm/nats/values.yaml -n nats my-nats ./stan_helm/nats/
 
     # Waiting for NATS Instances to be in ready-state
     printf "\nWaiting for NATS Instance(s) to become ready...\n"
@@ -160,9 +164,8 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
 
     # Creating STAN Cluster through Helm Chart
     printf "\nInstalling STAN Cluster Through Helm Chart\n"
-    cat stan_helm/stan/values.yaml | sed "s/NR_NODES/$NR_NODES/g" \
+    cat stan_helm/stan/values.yaml | sed "s/NR_NODES/$NR_NODES/g; s/CLUSTERED/$CLUSTERED/g" \
         | helm install -f - -n nats my-stan ./stan_helm/stan/
-    #helm install -f stan_helm/stan/values.yaml -n nats my-stan ./stan_helm/stan/
 
     printf "\nWaiting for STAN Instance(s) to become ready...\n"
     x=0

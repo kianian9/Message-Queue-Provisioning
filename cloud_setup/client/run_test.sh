@@ -3,7 +3,7 @@
 usage() { echo "Usage: $0 [OPTIONAL] [-broker <string>] [-host <string>] [-port <string>] 
                                 [-username <string>] [-password <string>] [-messageSize <int>] 
                                 [-numMessages <int>] [-producers <int>] [-consumers <int>] 
-                                [-queueType <string>] [-clusterID <string]" 1>&2; exit 1; }
+                                [-queueType <string>] [-clusterID <string>] [-topic <string>]" 1>&2; exit 1; }
 
 # Checking number arguments
 if [[ $# -gt 22 ]]; then
@@ -69,6 +69,11 @@ while test $# -gt 0; do
                 IMAGE_ARGUMENTS+=" -clusterID=$1"
                 shift
                 ;;
+            -topic)
+                shift
+                IMAGE_ARGUMENTS+=" -topic=$1"
+                shift
+                ;;
             *)
             echo "$1 is not a recognized flag!"
             usage
@@ -79,6 +84,4 @@ done
 cd provisioning
 CLIENT_IP=$(terraform output -raw client_host_ip)
 cd ..
-#ssh -o StrictHostKeyChecking=no $CLIENT_IP "sudo docker run kianian9/masih $IMAGE_ARGUMENTS > ./temp.txt"
-ssh -o StrictHostKeyChecking=no $CLIENT_IP "sudo docker run kianian9/masih $IMAGE_ARGUMENTS" >> results.txt
-#ssh -o StrictHostKeyChecking=no $CLIENT_IP "ls > temp.txt"
+ssh -o StrictHostKeyChecking=no $CLIENT_IP "sudo docker run kianian9/masih $IMAGE_ARGUMENTS" >> results2.txt

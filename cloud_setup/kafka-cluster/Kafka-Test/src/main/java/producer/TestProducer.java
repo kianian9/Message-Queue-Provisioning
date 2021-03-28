@@ -13,8 +13,9 @@ import java.util.Properties;
 public class TestProducer {
 
     public static void main(String[] args) throws InterruptedException {
+        String ip = "35.228.2.67";
         Properties props = new Properties();
-        props.put("bootstrap.servers", "35.228.42.71:9094");
+        props.put("bootstrap.servers", ip+":9094");
         props.put("acks", "all");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");

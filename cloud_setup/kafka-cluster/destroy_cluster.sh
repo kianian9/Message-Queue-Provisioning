@@ -53,8 +53,11 @@ if ! terraform destroy -var "project_id=" -var "node_count=" -var "machine_type=
     printf "\n\nCluster could not be destroyed!\n\n"; exit 1
 else
     DISKS=$(gcloud compute disks list --format="value(name)")
+    CLIENT_DISK="gce-client"
     for disk in $DISKS; do
-        gcloud compute disks delete $disk --quiet
+        if [[ "$disk" != *$"$CLIENT_DISK"* ]]; then
+            gcloud compute disks delete $disk --quiet
+        fi
     done
     printf "\n\nCluster successfully destroyed!\n\n"
 fi

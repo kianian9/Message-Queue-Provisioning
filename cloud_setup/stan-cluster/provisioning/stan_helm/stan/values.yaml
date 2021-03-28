@@ -191,8 +191,9 @@ store:
     options: {}
 
   # In case of using file or sql storage, sets up a NR_NODES node cluster.
+  # NOTE: Clustered mode only available if NR_NODES >= 3, CLUSTERED used as placeholder!
   cluster:
-    enabled: true
+    enabled: CLUSTERED
     logPath: /data/stan/log
 
   #

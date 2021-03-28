@@ -30,7 +30,7 @@ gcloud config set project $PROJECT_ID
 
 # Removing any added FW-rules
 FW_RULES=$(gcloud compute firewall-rules list --format="value(name)")
-RULE="k8s"
+RULE="gce-client"
 for rule in $FW_RULES; do
     if [[ "$rule" =~ "$RULE" ]]; then
         gcloud compute firewall-rules delete $rule --quiet

@@ -26,6 +26,7 @@ while test $# -gt 0; do
                 shift
                 NR_NODES=$1
                 CHECK_NUMBER_NODES $NR_NODES
+                MIRRORS=$(($NR_NODES / 2 +1))
                 if [[ $NR_NODES -le 0 ]] ; then
                     printf "Error: nrNodes must be greater than 0!\n" >&2; exit 1
                 fi
@@ -101,7 +102,6 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
     do
         IS_READY=$(kubectl get pods rabbitmq-server-$((NR_NODES-1)) -n rabbitmq-system -o \
                     jsonpath="Status: {.status.phase}" 2>/dev/null)
-
         if [[ "$IS_READY" =~ "$READY" ]]; then
             x=$(( $x + 1 ))
         else
@@ -142,11 +142,15 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
     printf "\nInitializing Grafana Visualizer for Prometheous\n"
     kubectl apply -f rabbitmq/grafana.yaml -n rabbitmq-system
 
-   # Setting Up Grafana Services
+    # Setting Up Grafana Services
     printf "\nSetting Up Grafana Services\n"
     kubectl apply -f rabbitmq/grafana_service.yaml
+    
+    # Setting High-Availability Policies For RabbitMQ
+    printf "\nSetting High-Availability Policies For RabbitMQ\n"
+    kubectl exec -it rabbitmq-server-0 -n rabbitmq-system -- /bin/bash -c "rabbitmqctl set_policy ha-mirror \".*\" '{\"ha-mode\":\"exactly\",\"ha-params\":$MIRRORS}'"
 
-    printf "Waiting For Load Balancing IP...\n"
+    printf "\nWaiting For Load Balancing IP...\n"
     x=0
     while [ $x -le 0 ]
     do
