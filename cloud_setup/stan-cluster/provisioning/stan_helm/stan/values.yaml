@@ -154,7 +154,7 @@ store:
   # Unlimited amount of msgs for channel/subject, note, it didn't work with 0 for bytes..
   limits:
     max_msgs: 0
-    max_bytes: 20GB
+    max_bytes: 75GB
 
   # Enables streaming/partitioning
   # 
@@ -170,7 +170,7 @@ store:
   volume:
     enabled: true
     mount: /data/stan
-    storageSize: 20Gi
+    storageSize: 75Gi
     accessModes: ReadWriteOnce
     storageClass: stan-sc
 

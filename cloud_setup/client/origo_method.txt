@@ -13,7 +13,8 @@ Johan's Origo Method:
         ∗ 7 000 000 000 B / 1000 B = 7 000 000 messages
 
     Using Origo Method for being able to eliminate future unsignificant tests (total 486 if run all)
-    Client in these tests is machine-type: e2-highcpu-16
+
+    Client in these tests is of machine-type: e2-highcpu-16
 
 
     (REMEMBER: Get both resource monitoring data and broker data)
@@ -216,6 +217,42 @@ Johan's Origo Method:
                         * An increase of the message size (to 1000 B) could potentially solve the broker limitations, and better performance can be reached
 
 
+            1.5) Test higher message size (1000B) to see if overall performance increases or not (only difference from the "middle" setting (Test 1) is 1000 B message size):
+                Test 1: Machine Type:       e2-highcpu-8
+                        Cluster Setup:      3
+                        Brokers:            Kafka, RabbitMQ, STAN
+                        Producer Mode:      3 prod/cons
+                        Message Setting:    1000 B
+
+
+                Results (Mean result of 3 runs):
+                    * Kafka:
+                        * Producer Throughput(msgs/s):  51195.0   msgs/sec
+                        * Producer Throughput(MB/s):    51.1950   MB/sec
+
+                        * Consumer Throughput(msgs/s):  262338.5  msgs/sec
+                        * Consumer Throughput(MB/s):    262.3385  MB/sec
+                        * Mean Latency:                 15.08     ms
+
+                    * RabbitMQ:
+                        * Producer Throughput(msgs/s):  5955.3    msgs/sec
+                        * Producer Throughput(MB/s):    5.9553    MB/sec
+
+                        * Consumer Throughput(msgs/s):  20960.7   msgs/sec
+                        * Consumer Throughput(MB/s):    20.9607   MB/sec
+                        * Mean Latency:                 317.2523  ms
+
+                    * STAN:
+                        * Producer Throughput(msgs/s):  20385.1   msgs/sec
+                        * Producer Throughput(MB/s):    20.3851   MB/sec
+
+                        * Consumer Throughput(msgs/s):  78005.6   msgs/sec
+                        * Consumer Throughput(MB/s):    78.0056   MB/sec
+                        * Mean Latency:                 91.47     ms
+
+                Analysis:
+                    * RabbitMQ increased its performance using 1000 B messages instead of 500 B a lot compared to other 3 broker cluster tests with 3 prod/cons
+                    * The consumer throughput for STAN became much better when using this setup, NATS server seems to be more optimized for larger messages than 500 B
 
 
 

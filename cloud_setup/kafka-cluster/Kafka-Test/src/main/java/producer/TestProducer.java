@@ -13,7 +13,24 @@ import java.util.Properties;
 public class TestProducer {
 
     public static void main(String[] args) throws InterruptedException {
-        String ip = "35.228.2.67";
+        String ip = null;
+        String topic = null;
+        int numMessages = 0;
+        if (args.length == 3) {
+            ip = args[0];
+            System.out.println(ip);
+            try {
+                numMessages = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
+                System.exit(1);
+            }
+            topic = args[2];
+        } else {
+            System.err.println("Usage: [IP]<string> [NUM_MESSAGES]<int> [TOPIC]<string>");
+            System.exit(1);
+        }
+        //String ip = "35.228.2.67";
         Properties props = new Properties();
         props.put("bootstrap.servers", ip+":9094");
         props.put("acks", "all");
@@ -31,7 +48,7 @@ public class TestProducer {
         byte[] myvar = "Any String you want".getBytes();
 
 
-        for (int j = 0; j < 500000; j++) {
+        for (int j = 0; j < numMessages; j++) {
             long timestamp2 = System.currentTimeMillis();
             String message = "Test - " + i;
             String s = new String(c, StandardCharsets.UTF_8);

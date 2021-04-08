@@ -45,6 +45,12 @@ resource "google_compute_instance" "default" {
     }
   }
 
+  # Remove these if money = no problem
+  #scheduling {
+  #  preemptible = true
+  #  automatic_restart = false
+  #}
+
   metadata = {
     ssh-keys = "${var.ssh_username}:${file(var.ssh_pub_key_path)}"
   }  

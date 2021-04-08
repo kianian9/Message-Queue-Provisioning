@@ -52,7 +52,7 @@ spec:
       - id: 0
         class: kafka-sc
         type: persistent-claim
-        size: 20Gi
+        size: 75Gi
         deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
