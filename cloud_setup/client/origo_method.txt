@@ -253,6 +253,10 @@ Johan's Origo Method:
                 Analysis:
                     * RabbitMQ increased its performance using 1000 B messages instead of 500 B a lot compared to other 3 broker cluster tests with 3 prod/cons
                     * The consumer throughput for STAN became much better when using this setup, NATS server seems to be more optimized for larger messages than 500 B
+                    * The message size did not have any impact on Kafka brokers, maybe try larger scale?
+
+                    * Could test same broker setup with e2-highcpu-16 machine type as well
+                    * Could also test a 5 node cluster to see if Kafka scales even more?
 
 
 
