@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            rabbitmq
+Host:                  35.228.46.226
+BrokerPort:            5672
+Username[RabbitMQ]:    PYBkSpRtGo15jgO4Z_9NjQh0LHSmeMWx
+Password[RabbitMQ]:    ZLmNkUYHRtdM4_EOLzGy8mHeSN-9-9aU
+MessageSize:           500
+Num Messages:          14000000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test
+**********************************************************
+
+
+Waiting for peers to be done
+
+Subscriber id: 1 starting consuming...
+Publisher id: 3 starting publishing...
+Subscriber id: 3 starting consuming...
+Publisher id: 2 starting publishing...
+Subscriber id: 2 starting consuming...
+Publisher id: 1 starting publishing...
+
+Subscriber id: 1 has completed
+
+Subscriber id: 2 has completed
+
+Subscriber id: 3 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 3 has completed
+
+Publisher id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             30m19.010254951s
+Broker:                   rabbitmq (35.228.46.226)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  14000000
+Total messages consumed:  14000000
+Bytes per message:        500
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-------------+----------------------+
+| PRODUCER | ERROR |  DURATION   | THROUGHPUT (MSG/SEC) |
++----------+-------+-------------+----------------------+
+| 1        | false | 1819007.875 | 2565.501             |
+| 2        | false | 1792101.250 | 2604.020             |
+| 3        | false | 1809384.125 | 2579.146             |
+| AVG      |       | 1806831.000 | 2582.889             |
++----------+-------+-------------+----------------------+
++----------+-------+------------+----------------------+-------+--------+--------+----------+----------+---------+----------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |    Q3    |   MAX    |  MEAN   |   IQR    | STD DEV |
++----------+-------+------------+----------------------+-------+--------+--------+----------+----------+---------+----------+---------+
+| 1        | false | 652130.125 | 7156.037             | 3     | 20     | 31     | 1381     | 2971     | 555.853 | 1361     | 751.345 |
+| 2        | false | 652140.125 | 7155.927             | 5     | 24     | 36     | 1450     | 2974     | 584.637 | 1426     | 780.775 |
+| 3        | false | 652143.750 | 7155.885             | 4     | 24     | 36     | 1451     | 2977     | 584.656 | 1427     | 780.798 |
+| AVG      |       | 652138.000 | 7155.949             | 4.000 | 22.000 | 34.000 | 1427.000 | 2974.000 | 575.049 | 1404.000 | 770.973 |
++----------+-------+------------+----------------------+-------+--------+--------+----------+----------+---------+----------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

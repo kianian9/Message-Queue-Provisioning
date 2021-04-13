@@ -84,4 +84,4 @@ done
 cd provisioning
 CLIENT_IP=$(terraform output -raw client_host_ip)
 cd ..
-ssh -o StrictHostKeyChecking=no $CLIENT_IP "sudo docker run kianian9/masih $IMAGE_ARGUMENTS" >> results.txt
+ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=5 $CLIENT_IP "sudo docker run kianian9/masih $IMAGE_ARGUMENTS" >> results.txt
