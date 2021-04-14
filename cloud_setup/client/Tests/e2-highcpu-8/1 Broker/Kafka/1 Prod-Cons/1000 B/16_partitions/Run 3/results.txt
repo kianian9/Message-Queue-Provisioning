@@ -4,13 +4,13 @@ Host:                  35.228.133.170
 BrokerPort:            9094
 Username[RabbitMQ]:    guest
 Password[RabbitMQ]:    guest
-MessageSize:           500
-Num Messages:          14000000
+MessageSize:           1000
+Num Messages:          7000000
 Nr Producers:          1
 Nr Consumers:          1
 Queue type[RabbitMQ]:  QUORUM
 Cluster ID[STAN]:      stan
-Topic[Kafka/STAN]:     test2
+Topic[Kafka/STAN]:     test3
 **********************************************************
 
 
@@ -25,27 +25,27 @@ Subscriber id: 1 has completed
 All peers done, getting results...
 
 TEST SUMMARY
-Time Elapsed:             1m48.606295745s
+Time Elapsed:             1m45.772392521s
 Broker:                   kafka (35.228.133.170)
 Number Publishers:        1
 Number Subscribers:       1
-Total messages produced:  14000000
-Total messages consumed:  14000000
-Bytes per message:        500
+Total messages produced:  7000000
+Total messages consumed:  7000000
+Bytes per message:        1000
 Total data produced (KB): 7000000
 Total data consumed (KB): 7000000
 
 +----------+-------+------------+----------------------+
 | PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
 +----------+-------+------------+----------------------+
-| 1        | false | 108575.070 | 128943.047           |
-| AVG      |       | 108575.070 | 128943.047           |
+| 1        | false | 105758.312 | 66188.648            |
+| AVG      |       | 105758.312 | 66188.648            |
 +----------+-------+------------+----------------------+
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
 | CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
-| 1        | false | 108604.633 | 128907.945           | 1     | 17     | 21     | 23     | 482     | 22.016 | 6     | 22.188  |
-| AVG      |       | 108604.633 | 128907.945           | 1.000 | 17.000 | 21.000 | 23.000 | 482.000 | 22.016 | 6.000 | 22.188  |
+| 1        | false | 105770.547 | 66180.992            | 1     | 19     | 20     | 22     | 718     | 22.539 | 3     | 26.056  |
+| AVG      |       | 105770.547 | 66180.992            | 1.000 | 19.000 | 20.000 | 22.000 | 718.000 | 22.539 | 3.000 | 26.056  |
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
 All units ms unless noted otherwise
 ********************************************************** DONE **********************************************************

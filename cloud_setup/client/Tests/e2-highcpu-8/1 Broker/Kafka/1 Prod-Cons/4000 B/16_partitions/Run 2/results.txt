@@ -4,8 +4,8 @@ Host:                  35.228.133.170
 BrokerPort:            9094
 Username[RabbitMQ]:    guest
 Password[RabbitMQ]:    guest
-MessageSize:           500
-Num Messages:          14000000
+MessageSize:           4000
+Num Messages:          1750000
 Nr Producers:          1
 Nr Consumers:          1
 Queue type[RabbitMQ]:  QUORUM
@@ -25,27 +25,27 @@ Subscriber id: 1 has completed
 All peers done, getting results...
 
 TEST SUMMARY
-Time Elapsed:             1m48.606295745s
+Time Elapsed:             1m44.902452423s
 Broker:                   kafka (35.228.133.170)
 Number Publishers:        1
 Number Subscribers:       1
-Total messages produced:  14000000
-Total messages consumed:  14000000
-Bytes per message:        500
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
 Total data produced (KB): 7000000
 Total data consumed (KB): 7000000
 
 +----------+-------+------------+----------------------+
 | PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
 +----------+-------+------------+----------------------+
-| 1        | false | 108575.070 | 128943.047           |
-| AVG      |       | 108575.070 | 128943.047           |
+| 1        | false | 104885.328 | 16684.889            |
+| AVG      |       | 104885.328 | 16684.889            |
 +----------+-------+------------+----------------------+
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
 | CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
-| 1        | false | 108604.633 | 128907.945           | 1     | 17     | 21     | 23     | 482     | 22.016 | 6     | 22.188  |
-| AVG      |       | 108604.633 | 128907.945           | 1.000 | 17.000 | 21.000 | 23.000 | 482.000 | 22.016 | 6.000 | 22.188  |
+| 1        | false | 104900.273 | 16682.512            | 1     | 19     | 20     | 21     | 900     | 23.168 | 2     | 30.560  |
+| AVG      |       | 104900.273 | 16682.512            | 1.000 | 19.000 | 20.000 | 21.000 | 900.000 | 23.168 | 2.000 | 30.560  |
 +----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
 All units ms unless noted otherwise
 ********************************************************** DONE **********************************************************

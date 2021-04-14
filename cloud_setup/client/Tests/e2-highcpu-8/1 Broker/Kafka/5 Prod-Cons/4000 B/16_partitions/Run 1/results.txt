@@ -1,0 +1,85 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.133.170
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          5
+Nr Consumers:          5
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test1
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 2 starting publishing...
+Subscriber id: 3 starting consuming...
+Publisher id: 4 starting publishing...
+Publisher id: 3 starting publishing...
+Subscriber id: 4 starting consuming...
+Subscriber id: 5 starting consuming...
+Subscriber id: 1 starting consuming...
+Publisher id: 1 starting publishing...
+Subscriber id: 2 starting consuming...
+Publisher id: 5 starting publishing...
+
+Subscriber id: 5 has completed
+
+Subscriber id: 2 has completed
+
+Subscriber id: 3 has completed
+
+Subscriber id: 1 has completed
+
+Subscriber id: 4 has completed
+
+Publisher id: 4 has completed
+
+Publisher id: 5 has completed
+
+Publisher id: 1 has completed
+
+Publisher id: 3 has completed
+
+Publisher id: 2 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m44.50759978s
+Broker:                   kafka (35.228.133.170)
+Number Publishers:        5
+Number Subscribers:       5
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 101001.445 | 3465.297             |
+| 2        | false | 104507.305 | 3349.048             |
+| 3        | false | 103753.266 | 3373.388             |
+| 4        | false | 98702.219  | 3546.020             |
+| 5        | false | 98869.859  | 3540.007             |
+| AVG      |       | 101366.812 | 3454.752             |
++----------+-------+------------+----------------------+
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+---------+--------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX    |  MEAN   |  IQR   | STD DEV |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+---------+--------+---------+
+| 1        | false | 15806.970 | 22142.131            | 1     | 12     | 16     | 31     | 1895     | 237.271 | 19     | 476.019 |
+| 2        | false | 15806.379 | 22142.959            | 2     | 14     | 18     | 36     | 1948     | 251.320 | 22     | 498.421 |
+| 3        | false | 15811.386 | 22135.947            | 1     | 13     | 17     | 33     | 1940     | 246.625 | 20     | 492.697 |
+| 4        | false | 15812.903 | 22133.822            | 1     | 14     | 18     | 34     | 1966     | 254.226 | 20     | 503.167 |
+| 5        | false | 15807.562 | 22141.301            | 2     | 12     | 16     | 32     | 1869     | 234.005 | 20     | 468.681 |
+| AVG      |       | 15809.041 | 22139.230            | 1.000 | 13.000 | 17.000 | 33.000 | 1923.000 | 244.689 | 20.000 | 487.797 |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+---------+--------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+
