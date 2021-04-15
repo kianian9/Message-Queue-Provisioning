@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            rabbitmq
+Host:                  35.228.198.185
+BrokerPort:            5672
+Username[RabbitMQ]:    nCFiKNzKu0tPRcz_l97qG-WQigExJpWG
+Password[RabbitMQ]:    EijaFLI0z4bF27MqYV7iJLdsXgMrDLEl
+MessageSize:           1000
+Num Messages:          7000000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             7m24.461810689s
+Broker:                   rabbitmq (35.228.198.185)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  7000000
+Total messages consumed:  7000000
+Bytes per message:        1000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 444332.656 | 15753.963            |
+| AVG      |       | 444332.656 | 15753.963            |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+-------+---------+---------+---------+---------+---------+--------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1    |   Q2    |   Q3    |   MAX   |  MEAN   |  IQR   | STD DEV |
++----------+-------+------------+----------------------+-------+---------+---------+---------+---------+---------+--------+---------+
+| 1        | false | 444460.094 | 15749.445            | 1     | 124     | 129     | 134     | 295     | 129.796 | 10     | 11.619  |
+| AVG      |       | 444460.094 | 15749.445            | 1.000 | 124.000 | 129.000 | 134.000 | 295.000 | 129.796 | 10.000 | 11.619  |
++----------+-------+------------+----------------------+-------+---------+---------+---------+---------+---------+--------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+
