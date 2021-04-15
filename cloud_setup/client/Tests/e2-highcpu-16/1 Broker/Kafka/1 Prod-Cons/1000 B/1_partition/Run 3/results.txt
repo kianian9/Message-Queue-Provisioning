@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.208.111
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           1000
+Num Messages:          7000000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test3
+**********************************************************
+
+
+Waiting for peers to be done
+
+Subscriber id: 1 starting consuming...
+Publisher id: 1 starting publishing...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m23.955091671s
+Broker:                   kafka (35.228.208.111)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  7000000
+Total messages consumed:  7000000
+Bytes per message:        1000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-----------+----------------------+
+| PRODUCER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+-----------+----------------------+
+| 1        | false | 83936.109 | 83396.766            |
+| AVG      |       | 83936.109 | 83396.766            |
++----------+-------+-----------+----------------------+
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX    |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+--------+-------+---------+
+| 1        | false | 83953.312 | 83379.680            | 0     | 14     | 14     | 15     | 1086     | 16.957 | 1     | 31.759  |
+| AVG      |       | 83953.312 | 83379.680            | 0.000 | 14.000 | 14.000 | 15.000 | 1086.000 | 16.957 | 1.000 | 31.759  |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+----------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

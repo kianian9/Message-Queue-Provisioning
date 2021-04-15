@@ -1,6 +1,6 @@
 ************************ Settings ************************
 BrokerName:            kafka
-Host:                  35.228.226.65
+Host:                  35.228.219.45
 BrokerPort:            9094
 Username[RabbitMQ]:    guest
 Password[RabbitMQ]:    guest
@@ -17,40 +17,40 @@ Topic[Kafka/STAN]:     test1
 Waiting for peers to be done
 
 Subscriber id: 4 starting consuming...
-Publisher id: 5 starting publishing...
-Publisher id: 4 starting publishing...
 Subscriber id: 5 starting consuming...
-Publisher id: 2 starting publishing...
-Subscriber id: 2 starting consuming...
 Publisher id: 3 starting publishing...
-Subscriber id: 3 starting consuming...
+Publisher id: 5 starting publishing...
 Subscriber id: 1 starting consuming...
+Subscriber id: 3 starting consuming...
 Publisher id: 1 starting publishing...
-
-Subscriber id: 1 has completed
-
-Subscriber id: 3 has completed
+Publisher id: 2 starting publishing...
+Publisher id: 4 starting publishing...
+Subscriber id: 2 starting consuming...
 
 Subscriber id: 4 has completed
 
-Subscriber id: 5 has completed
+Subscriber id: 3 has completed
 
 Subscriber id: 2 has completed
 
-Publisher id: 1 has completed
+Subscriber id: 5 has completed
 
-Publisher id: 5 has completed
+Subscriber id: 1 has completed
 
 Publisher id: 4 has completed
 
 Publisher id: 2 has completed
 
+Publisher id: 5 has completed
+
+Publisher id: 1 has completed
+
 Publisher id: 3 has completed
 All peers done, getting results...
 
 TEST SUMMARY
-Time Elapsed:             2m13.605831277s
-Broker:                   kafka (35.228.226.65)
+Time Elapsed:             1m44.242538533s
+Broker:                   kafka (35.228.219.45)
 Number Publishers:        5
 Number Subscribers:       5
 Total messages produced:  7000000
@@ -62,22 +62,22 @@ Total data consumed (KB): 7000000
 +----------+-------+------------+----------------------+
 | PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
 +----------+-------+------------+----------------------+
-| 1        | false | 128763.180 | 10872.674            |
-| 2        | false | 133347.031 | 10498.922            |
-| 3        | false | 133604.828 | 10478.663            |
-| 4        | false | 132901.188 | 10534.143            |
-| 5        | false | 132542.406 | 10562.657            |
-| AVG      |       | 132231.719 | 10589.411            |
+| 1        | false | 103834.492 | 13482.995            |
+| 2        | false | 102141.336 | 13706.498            |
+| 3        | false | 104241.352 | 13430.371            |
+| 4        | false | 100669.039 | 13906.957            |
+| 5        | false | 103646.281 | 13507.479            |
+| AVG      |       | 102906.500 | 13606.859            |
 +----------+-------+------------+----------------------+
 +----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
 | CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |  Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
 +----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
-| 1        | false | 15119.932 | 92593.008            | 1     | 13    | 16     | 20     | 195     | 18.756 | 7     | 14.903  |
-| 2        | false | 15132.858 | 92513.914            | 1     | 9     | 11     | 15     | 186     | 13.734 | 6     | 13.728  |
-| 3        | false | 15122.576 | 92576.820            | 1     | 9     | 11     | 14     | 180     | 13.256 | 5     | 13.277  |
-| 4        | false | 15124.379 | 92565.781            | 1     | 9     | 11     | 14     | 180     | 13.442 | 5     | 13.331  |
-| 5        | false | 15125.905 | 92556.445            | 1     | 8     | 11     | 13     | 187     | 12.807 | 5     | 13.485  |
-| AVG      |       | 15125.130 | 92561.195            | 1.000 | 9.000 | 12.000 | 15.000 | 185.000 | 14.399 | 5.000 | 13.745  |
+| 1        | false | 16364.830 | 85549.312            | 1     | 13    | 16     | 20     | 195     | 18.756 | 7     | 14.903  |
+| 2        | false | 15879.036 | 88166.562            | 1     | 9     | 11     | 15     | 186     | 13.734 | 6     | 13.728  |
+| 3        | false | 15881.073 | 88155.250            | 1     | 9     | 11     | 14     | 180     | 13.256 | 5     | 13.277  |
+| 4        | false | 15883.087 | 88144.078            | 1     | 9     | 11     | 14     | 180     | 13.442 | 5     | 13.331  |
+| 5        | false | 15984.903 | 87582.641            | 1     | 8     | 11     | 13     | 187     | 12.807 | 5     | 13.485  |
+| AVG      |       | 15998.586 | 87519.562            | 1.000 | 9.000 | 12.000 | 15.000 | 185.000 | 14.399 | 5.000 | 13.745  |
 +----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
 All units ms unless noted otherwise
 ********************************************************** DONE **********************************************************

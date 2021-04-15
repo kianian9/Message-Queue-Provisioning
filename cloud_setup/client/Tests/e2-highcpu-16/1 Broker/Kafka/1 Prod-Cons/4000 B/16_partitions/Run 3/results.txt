@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.198.185
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test3
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m40.33681522s
+Broker:                   kafka (35.228.198.185)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 100326.641 | 17443.023            |
+| AVG      |       | 100326.641 | 17443.023            |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 100335.133 | 17441.547            | 1     | 16     | 18     | 23     | 567     | 23.950 | 7     | 30.653  |
+| AVG      |       | 100335.133 | 17441.547            | 1.000 | 16.000 | 18.000 | 23.000 | 567.000 | 23.950 | 7.000 | 30.653  |
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

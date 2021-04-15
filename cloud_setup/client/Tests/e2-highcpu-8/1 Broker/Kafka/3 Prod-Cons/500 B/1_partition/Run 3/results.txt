@@ -1,6 +1,6 @@
 ************************ Settings ************************
 BrokerName:            kafka
-Host:                  35.228.85.208
+Host:                  35.228.219.45
 BrokerPort:            9094
 Username[RabbitMQ]:    guest
 Password[RabbitMQ]:    guest
@@ -16,29 +16,29 @@ Topic[Kafka/STAN]:     test3
 
 Waiting for peers to be done
 
-Publisher id: 1 starting publishing...
-Subscriber id: 3 starting consuming...
 Publisher id: 3 starting publishing...
-Subscriber id: 2 starting consuming...
 Publisher id: 2 starting publishing...
+Publisher id: 1 starting publishing...
+Subscriber id: 2 starting consuming...
 Subscriber id: 1 starting consuming...
+Subscriber id: 3 starting consuming...
+
+Subscriber id: 2 has completed
 
 Subscriber id: 1 has completed
 
 Subscriber id: 3 has completed
 
-Subscriber id: 2 has completed
+Publisher id: 1 has completed
 
 Publisher id: 2 has completed
-
-Publisher id: 1 has completed
 
 Publisher id: 3 has completed
 All peers done, getting results...
 
 TEST SUMMARY
-Time Elapsed:             2m15.286679335s
-Broker:                   kafka (35.228.85.208)
+Time Elapsed:             1m44.985661869s
+Broker:                   kafka (35.228.219.45)
 Number Publishers:        3
 Number Subscribers:       3
 Total messages produced:  14000000
@@ -50,19 +50,19 @@ Total data consumed (KB): 7000000
 +----------+-------+------------+----------------------+
 | PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
 +----------+-------+------------+----------------------+
-| 1        | false | 134950.094 | 34580.688            |
-| 2        | false | 132727.297 | 35159.812            |
-| 3        | false | 135284.891 | 34495.102            |
-| AVG      |       | 134320.750 | 34745.199            |
+| 1        | false | 103787.602 | 44963.629            |
+| 2        | false | 104978.781 | 44453.430            |
+| 3        | false | 104985.297 | 44450.664            |
+| AVG      |       | 104583.898 | 44622.574            |
 +----------+-------+------------+----------------------+
-+----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
-| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |  Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
-+----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
-| 1        | false | 26768.248 | 174335.922           | 0     | 9     | 13     | 18     | 219     | 13.729 | 9     | 7.079   |
-| 2        | false | 26781.893 | 174247.094           | 0     | 10    | 15     | 19     | 238     | 15.316 | 9     | 8.695   |
-| 3        | false | 26773.834 | 174299.500           | 0     | 9     | 13     | 18     | 224     | 14.414 | 9     | 7.802   |
-| AVG      |       | 26774.658 | 174294.172           | 0.000 | 9.000 | 13.000 | 18.000 | 227.000 | 14.486 | 9.000 | 7.859   |
-+----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 31778.525 | 146849.703           | 0     | 11     | 16     | 22     | 167     | 17.560 | 11    | 9.095   |
+| 2        | false | 31774.783 | 146867.000           | 0     | 9      | 12     | 16     | 169     | 13.635 | 7     | 7.600   |
+| 3        | false | 31780.998 | 146838.250           | 0     | 16     | 20     | 25     | 189     | 21.102 | 9     | 9.513   |
+| AVG      |       | 31778.102 | 146851.641           | 0.000 | 12.000 | 16.000 | 21.000 | 175.000 | 17.432 | 9.000 | 8.736   |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
 All units ms unless noted otherwise
 ********************************************************** DONE **********************************************************
 
