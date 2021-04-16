@@ -639,12 +639,12 @@ Johan's Origo Method:
                         * Mean Latency:                 6982.31   ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  14940.4   msgs/sec
+                        * Producer Throughput(MB/s):    59.7617   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  66564.4   msgs/sec
+                        * Consumer Throughput(MB/s):    266.2576  MB/sec
+                        * Mean Latency:                 35.51     ms
 
 
 
@@ -683,12 +683,12 @@ Johan's Origo Method:
                         * Mean Latency:                 134.85    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  34538.8   msgs/sec
+                        * Producer Throughput(MB/s):    34.5388   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  34530.4   msgs/sec
+                        * Consumer Throughput(MB/s):    34.5304   MB/sec
+                        * Mean Latency:                 58.43     ms
 
 
 
@@ -706,9 +706,9 @@ Johan's Origo Method:
                         * Producer Throughput(msgs/s):  17107.4   msgs/sec
                         * Producer Throughput(MB/s):    68.4295   MB/sec
 
-                        * Consumer Throughput(msgs/s):  17097.0  msgs/sec
+                        * Consumer Throughput(msgs/s):  17097.0   msgs/sec
                         * Consumer Throughput(MB/s):    68.3880   MB/sec
-                        * Mean Latency:                 19.93    ms
+                        * Mean Latency:                 19.93     ms
 
                     * Kafka[16 partitions]:
                         * Producer Throughput(msgs/s):  16700.9   msgs/sec
@@ -724,15 +724,15 @@ Johan's Origo Method:
 
                         * Consumer Throughput(msgs/s):  7819.4    msgs/sec
                         * Consumer Throughput(MB/s):    31.2777   MB/sec
-                        * Mean Latency:                 67.01    ms
+                        * Mean Latency:                 67.01     ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  10108.8   msgs/sec
+                        * Producer Throughput(MB/s):    40.4353   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  10107.2   msgs/sec
+                        * Consumer Throughput(MB/s):    40.4288   MB/sec
+                        * Mean Latency:                 51.40     ms
 
 
             1.17) Testing for better performance compared to Test 15 above (changing to e2-highcpu-16) [Should be optimal cluster setup for RabbitMQ and STAN (no replication/consensus overhead]:
@@ -761,20 +761,20 @@ Johan's Origo Method:
                         * Mean Latency:                 17.93     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):      msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  15689.8   msgs/sec
+                        * Producer Throughput(MB/s):    15.6898   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  15685.1   msgs/sec
+                        * Consumer Throughput(MB/s):    15.6851   MB/sec
+                        * Mean Latency:                 130.20    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  22244.5   msgs/sec
+                        * Producer Throughput(MB/s):    22.2445   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  22242.7   msgs/sec
+                        * Consumer Throughput(MB/s):    22.2427   MB/sec
+                        * Mean Latency:                 93.28     ms
 
 
 
@@ -804,20 +804,20 @@ Johan's Origo Method:
                         * Mean Latency:                 21.67     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):      msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  7816.3    msgs/sec
+                        * Producer Throughput(MB/s):    31.2651   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  7814.4    msgs/sec
+                        * Consumer Throughput(MB/s):    31.2577   MB/sec
+                        * Mean Latency:                 67.32     ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  13577.4   msgs/sec
+                        * Producer Throughput(MB/s):    54.3095   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  13573.8   msgs/sec
+                        * Consumer Throughput(MB/s):    54.2951   MB/sec
+                        * Mean Latency:                 37.52     ms
 
 
 
@@ -897,17 +897,59 @@ Johan's Origo Method:
                         * Mean Latency:                     ms
 
                     * STAN:
+                        * Producer Throughput(msgs/s):  14938.8   msgs/sec
+                        * Producer Throughput(MB/s):    59.7551   MB/sec
+
+                        * Consumer Throughput(msgs/s):  59350.3   msgs/sec
+                        * Consumer Throughput(MB/s):    237.4012  MB/sec
+                        * Mean Latency:                 41.12     ms
+
+
+
+            1.21) Testing for better performance compared to Test 20 above (changing machine type) [Should be optimal cluster setup for RabbitMQ and STAN (no replication/consensus overhead]:
+                Test 21: 
+                        Machine Type:                       e2-highcpu-16
+                        Cluster Setup:                      1
+                        Brokers:                            Kafka, RabbitMQ, STAN
+                        Producer Mode/Consumer Mode:        3 prod/cons
+                        Message Setting:                    4000 B
+
+                Results (Mean result of 3 runs):
+                    * Kafka[1 partition]:
                         * Producer Throughput(msgs/s):     msgs/sec
                         * Producer Throughput(MB/s):       MB/sec
 
                         * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
+                        * Consumer Throughput(MB/s):     MB/sec
                         * Mean Latency:                     ms
 
+                    * Kafka[16 partitions]:
+                        * Producer Throughput(msgs/s):    msgs/sec
+                        * Producer Throughput(MB/s):       MB/sec
+
+                        * Consumer Throughput(msgs/s):    msgs/sec
+                        * Consumer Throughput(MB/s):      MB/sec
+                        * Mean Latency:                     ms
+
+                    * RabbitMQ:
+                        * Producer Throughput(msgs/s):  1721.8    msgs/sec
+                        * Producer Throughput(MB/s):    6.8873    MB/sec
+
+                        * Consumer Throughput(msgs/s):  6243.7    msgs/sec
+                        * Consumer Throughput(MB/s):    24.9748   MB/sec
+                        * Mean Latency:                 1619.42   ms
+
+                    * STAN:
+                        * Producer Throughput(msgs/s):  14538.1   msgs/sec
+                        * Producer Throughput(MB/s):    58.1524   MB/sec
+
+                        * Consumer Throughput(msgs/s):  43534.3   msgs/sec
+                        * Consumer Throughput(MB/s):    174.1374  MB/sec
+                        * Mean Latency:                 33.13     ms
 
 
-            1.21) Testing for better performance compared to Test 3 above (changing greater message size) [Should be optimal cluster setup for RabbitMQ and STAN (no replication/consensus overhead]:
-                Test 21: 
+            1.22) Testing for better performance compared to Test 3 above (changing greater message size) [Should be optimal cluster setup for RabbitMQ and STAN (no replication/consensus overhead]:
+                Test 22: 
                         Machine Type:                       e2-highcpu-8
                         Cluster Setup:                      1
                         Brokers:                            Kafka, RabbitMQ, STAN
@@ -937,15 +979,15 @@ Johan's Origo Method:
 
                         * Consumer Throughput(msgs/s):  6678.4    msgs/sec
                         * Consumer Throughput(MB/s):    26.7136   MB/sec
-                        * Mean Latency:                 1234.08    ms
+                        * Mean Latency:                 1234.08   ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  10884.5   msgs/sec
+                        * Producer Throughput(MB/s):    43.5379   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  45037.9   msgs/sec
+                        * Consumer Throughput(MB/s):    180.1515  MB/sec
+                        * Mean Latency:                 32.15     ms
 
 
             
