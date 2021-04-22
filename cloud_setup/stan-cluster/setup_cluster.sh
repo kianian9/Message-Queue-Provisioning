@@ -114,7 +114,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
         if [[ "$IS_READY" =~ "$READY" ]] && [[ "$IS_READY" =~ "1/1" ]]; then
             x=$(( $x + 1 ))
         else
-            sleep 2
+            sleep 5
         fi
     done
 
@@ -136,7 +136,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
         if [[ "$IS_READY" =~ "$READY" ]] && [[ "$IS_READY" =~ "1/1" ]]; then
             x=$(( $x + 1 ))
         else
-            sleep 2
+            sleep 5
         fi
     done
 
@@ -158,7 +158,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
         if [[ "$IS_READY" =~ "$READY" ]] && [[ "$IS_READY" =~ "3/3" ]]; then
             x=$(( $x + 1 ))
         else
-            sleep 2
+            sleep 5
         fi
     done
 
@@ -176,7 +176,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
         if [[ "$IS_READY" =~ "$READY" ]] && [[ "$IS_READY" =~ "2/2" ]]; then
             x=$(( $x + 1 ))
         else
-            sleep 2
+            sleep 5
         fi
     done
 

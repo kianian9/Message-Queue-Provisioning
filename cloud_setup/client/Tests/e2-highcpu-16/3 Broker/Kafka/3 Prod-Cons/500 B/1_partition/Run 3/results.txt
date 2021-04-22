@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.46.226
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           500
+Num Messages:          14000000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test3
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 3 starting consuming...
+Publisher id: 3 starting publishing...
+Subscriber id: 2 starting consuming...
+Subscriber id: 1 starting consuming...
+Publisher id: 2 starting publishing...
+
+Subscriber id: 2 has completed
+
+Subscriber id: 1 has completed
+
+Subscriber id: 3 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 3 has completed
+
+Publisher id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m37.222507458s
+Broker:                   kafka (35.228.46.226)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  14000000
+Total messages consumed:  14000000
+Bytes per message:        500
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-----------+----------------------+
+| PRODUCER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+-----------+----------------------+
+| 1        | false | 97222.352 | 47999.941            |
+| 2        | false | 97121.492 | 48049.785            |
+| 3        | false | 97125.742 | 48047.676            |
+| AVG      |       | 97156.531 | 48032.469            |
++----------+-------+-----------+----------------------+
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 36629.809 | 127400.805           | 3     | 14     | 18     | 23     | 212     | 21.238 | 9     | 11.971  |
+| 2        | false | 36629.699 | 127401.180           | 4     | 15     | 18     | 23     | 209     | 21.452 | 8     | 12.039  |
+| 3        | false | 36630.273 | 127399.156           | 5     | 14     | 18     | 23     | 211     | 21.454 | 9     | 12.118  |
+| AVG      |       | 36629.926 | 127400.375           | 4.000 | 14.000 | 18.000 | 23.000 | 210.000 | 21.381 | 8.000 | 12.043  |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

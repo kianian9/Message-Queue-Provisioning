@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.2.67
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           1000
+Num Messages:          7000000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test2
+**********************************************************
+
+
+Waiting for peers to be done
+
+Subscriber id: 2 starting consuming...
+Publisher id: 2 starting publishing...
+Subscriber id: 3 starting consuming...
+Publisher id: 3 starting publishing...
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Subscriber id: 2 has completed
+
+Subscriber id: 3 has completed
+
+Subscriber id: 1 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 1 has completed
+
+Publisher id: 3 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m7.470758306s
+Broker:                   kafka (35.228.2.67)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  7000000
+Total messages consumed:  7000000
+Bytes per message:        1000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-----------+----------------------+
+| PRODUCER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+-----------+----------------------+
+| 1        | false | 67223.141 | 34710.281            |
+| 2        | false | 66379.875 | 35151.211            |
+| 3        | false | 67468.992 | 34583.781            |
+| AVG      |       | 67024.000 | 34815.090            |
++----------+-------+-----------+----------------------+
++----------+-------+-----------+----------------------+-------+-------+-------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |  Q1   |  Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+-------+-------+--------+---------+--------+-------+---------+
+| 1        | false | 23945.658 | 97442.883            | 2     | 8     | 10    | 12     | 132     | 13.624 | 4     | 13.424  |
+| 2        | false | 23948.404 | 97431.672            | 1     | 8     | 10    | 12     | 132     | 13.683 | 4     | 13.575  |
+| 3        | false | 23947.162 | 97436.719            | 1     | 8     | 9     | 12     | 132     | 13.135 | 4     | 13.275  |
+| AVG      |       | 23947.076 | 97437.094            | 1.000 | 8.000 | 9.000 | 12.000 | 132.000 | 13.481 | 4.000 | 13.424  |
++----------+-------+-----------+----------------------+-------+-------+-------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

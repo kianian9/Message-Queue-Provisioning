@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.198.185
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test1
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 3 starting publishing...
+Publisher id: 1 starting publishing...
+Subscriber id: 3 starting consuming...
+Subscriber id: 1 starting consuming...
+Publisher id: 2 starting publishing...
+Subscriber id: 2 starting consuming...
+
+Subscriber id: 2 has completed
+
+Subscriber id: 3 has completed
+
+Subscriber id: 1 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 3 has completed
+
+Publisher id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m39.22538019s
+Broker:                   kafka (35.228.198.185)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-----------+----------------------+
+| PRODUCER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+-----------+----------------------+
+| 1        | false | 99225.227 | 5878.888             |
+| 2        | false | 97437.914 | 5986.715             |
+| 3        | false | 98386.734 | 5928.980             |
+| AVG      |       | 98349.961 | 5931.528             |
++----------+-------+-----------+----------------------+
++----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |  Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 20175.350 | 28913.205            | 0     | 10    | 12     | 14     | 457     | 13.524 | 4     | 13.264  |
+| 2        | false | 20171.408 | 28918.803            | 0     | 9     | 11     | 13     | 451     | 12.769 | 4     | 12.330  |
+| 3        | false | 20172.904 | 28916.658            | 0     | 9     | 12     | 14     | 453     | 13.441 | 5     | 15.165  |
+| AVG      |       | 20173.221 | 28916.221            | 0.000 | 9.000 | 11.000 | 13.000 | 453.000 | 13.244 | 4.000 | 13.586  |
++----------+-------+-----------+----------------------+-------+-------+--------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

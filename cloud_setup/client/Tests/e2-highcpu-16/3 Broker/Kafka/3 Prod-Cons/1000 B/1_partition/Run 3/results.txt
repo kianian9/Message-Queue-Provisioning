@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.46.226
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           1000
+Num Messages:          7000000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test3
+**********************************************************
+
+
+Waiting for peers to be done
+
+Subscriber id: 2 starting consuming...
+Publisher id: 2 starting publishing...
+Publisher id: 1 starting publishing...
+Publisher id: 3 starting publishing...
+Subscriber id: 1 starting consuming...
+Subscriber id: 3 starting consuming...
+
+Subscriber id: 3 has completed
+
+Subscriber id: 1 has completed
+
+Subscriber id: 2 has completed
+
+Publisher id: 1 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 3 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             1m31.974932181s
+Broker:                   kafka (35.228.46.226)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  7000000
+Total messages consumed:  7000000
+Bytes per message:        1000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+-----------+----------------------+
+| PRODUCER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+-----------+----------------------+
+| 1        | false | 91959.672 | 25373.449            |
+| 2        | false | 91965.898 | 25371.719            |
+| 3        | false | 91974.617 | 25369.314            |
+| AVG      |       | 91966.727 | 25371.494            |
++----------+-------+-----------+----------------------+
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR | DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 34326.207 | 67975.297            | 2     | 15     | 18     | 22     | 142     | 20.734 | 7     | 11.147  |
+| 2        | false | 34328.344 | 67971.031            | 4     | 14     | 17     | 22     | 139     | 20.494 | 8     | 11.206  |
+| 3        | false | 34325.570 | 67976.523            | 2     | 14     | 17     | 21     | 138     | 19.645 | 7     | 11.068  |
+| AVG      |       | 34326.707 | 67974.281            | 2.000 | 14.000 | 17.000 | 21.000 | 139.000 | 20.291 | 7.000 | 11.140  |
++----------+-------+-----------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

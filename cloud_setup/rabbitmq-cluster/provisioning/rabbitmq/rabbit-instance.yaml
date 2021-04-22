@@ -21,7 +21,7 @@ spec:
   replicas: NR_NODES
   persistence:
     storageClassName: rabbit-sc
-    storage: 75Gi
+    storage: 100Gi
   rabbitmq:
     additionalPlugins:
       - rabbitmq_federation

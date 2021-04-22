@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            kafka
+Host:                  35.228.46.226
+BrokerPort:            9094
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test1
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             2m21.485505018s
+Broker:                   kafka (35.228.46.226)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 141448.672 | 12371.979            |
+| AVG      |       | 141448.672 | 12371.979            |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR  | STD DEV |
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+| 1        | false | 141484.094 | 12368.882            | 8     | 22     | 23     | 25     | 170     | 25.541 | 3     | 7.555   |
+| AVG      |       | 141484.094 | 12368.882            | 8.000 | 22.000 | 23.000 | 25.000 | 170.000 | 25.541 | 3.000 | 7.555   |
++----------+-------+------------+----------------------+-------+--------+--------+--------+---------+--------+-------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

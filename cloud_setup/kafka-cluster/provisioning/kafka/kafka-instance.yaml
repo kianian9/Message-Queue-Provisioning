@@ -36,7 +36,7 @@ spec:
         type: loadbalancer
         tls: false
     config:
-      num.partitions: NR_NODES
+      num.partitions: 1
       default.replication.factor: NR_NODES
       offsets.topic.replication.factor: NR_NODES
       transaction.state.log.replication.factor: NR_NODES
@@ -52,7 +52,7 @@ spec:
       - id: 0
         class: kafka-sc
         type: persistent-claim
-        size: 75Gi
+        size: 100Gi
         deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
