@@ -95,7 +95,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
         | kubectl apply -f - -n rabbitmq-system
     
     # Waiting for RabbitMQ Instances to be in ready-state
-    printf "Waiting for Instance(s) to become ready...\n"
+    printf "\nWaiting for Instance(s) to become ready...\n"
     x=0
     READY="Running"
     while [ $x -le 0 ]
