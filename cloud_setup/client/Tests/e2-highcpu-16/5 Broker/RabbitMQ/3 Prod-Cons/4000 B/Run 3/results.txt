@@ -1,0 +1,69 @@
+************************ Settings ************************
+BrokerName:            rabbitmq
+Host:                  35.228.226.65
+BrokerPort:            5672
+Username[RabbitMQ]:    jAsRaCFCoXXMXXvsyVi0rKTcTQ-MGTpI
+Password[RabbitMQ]:    IJoXFAVM1XUQNHUa_u7ZVSfV3MXieRnF
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          3
+Nr Consumers:          3
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test
+**********************************************************
+
+
+Waiting for peers to be done
+
+Subscriber id: 2 starting consuming...
+Publisher id: 2 starting publishing...
+Publisher id: 3 starting publishing...
+Subscriber id: 3 starting consuming...
+Subscriber id: 1 starting consuming...
+Publisher id: 1 starting publishing...
+
+Subscriber id: 3 has completed
+
+Subscriber id: 2 has completed
+
+Subscriber id: 1 has completed
+
+Publisher id: 1 has completed
+
+Publisher id: 2 has completed
+
+Publisher id: 3 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             12m7.677686579s
+Broker:                   rabbitmq (35.228.226.65)
+Number Publishers:        3
+Number Subscribers:       3
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 693648.750 | 840.965              |
+| 2        | false | 725981.938 | 803.509              |
+| 3        | false | 727677.312 | 801.637              |
+| AVG      |       | 715769.312 | 815.370              |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+-------+---------+---------+---------+----------+---------+---------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN  |   Q1    |   Q2    |   Q3    |   MAX    |  MEAN   |   IQR   | STD DEV |
++----------+-------+------------+----------------------+-------+---------+---------+---------+----------+---------+---------+---------+
+| 1        | false | 179794.875 | 3244.442             | 6     | 122     | 164     | 252     | 2717     | 296.864 | 130     | 360.359 |
+| 2        | false | 179784.484 | 3244.624             | 6     | 122     | 165     | 253     | 2713     | 297.210 | 131     | 359.535 |
+| 3        | false | 179743.922 | 3245.356             | 5     | 114     | 156     | 252     | 2623     | 281.344 | 138     | 343.005 |
+| AVG      |       | 179774.438 | 3244.807             | 5.000 | 119.000 | 161.000 | 252.000 | 2684.000 | 291.806 | 133.000 | 354.300 |
++----------+-------+------------+----------------------+-------+---------+---------+---------+----------+---------+---------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+
