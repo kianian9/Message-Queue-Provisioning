@@ -399,13 +399,29 @@ Johan's Origo Method:
                         Message Setting:                    500 B
 
                 Results (Mean result of 3 runs):
-                    * Kafka:
+                    * Kafka[1 partition]:
+                        * Producer Throughput(msgs/s):  133199.9  msgs/sec
+                        * Producer Throughput(MB/s):    66.6000   MB/sec
+
+                        * Consumer Throughput(msgs/s):  319511.1  msgs/sec
+                        * Consumer Throughput(MB/s):    159.7556  MB/sec
+                        * Mean Latency:                 25.74     ms
+
+                    * Kafka[3 partitions]:
                         * Producer Throughput(msgs/s):  102389.1  msgs/sec
                         * Producer Throughput(MB/s):    51.1946   MB/sec
 
                         * Consumer Throughput(msgs/s):  476752.1  msgs/sec
                         * Consumer Throughput(MB/s):    238.3760  MB/sec
                         * Mean Latency:                 15.27     ms
+
+                    * Kafka[16 partitions]:
+                        * Producer Throughput(msgs/s):  181483.1  msgs/sec
+                        * Producer Throughput(MB/s):    90.7416   MB/sec
+
+                        * Consumer Throughput(msgs/s):  394284.3  msgs/sec
+                        * Consumer Throughput(MB/s):    197.1422  MB/sec
+                        * Mean Latency:                 18.42     ms
 
                     * RabbitMQ:
                         * Producer Throughput(msgs/s):  8331.3    msgs/sec
@@ -437,13 +453,29 @@ Johan's Origo Method:
 
 
                 Results (Mean result of 3 runs):
-                    * Kafka:
+                    * Kafka[1 partition]:
+                        * Producer Throughput(msgs/s):  136384.0  msgs/sec
+                        * Producer Throughput(MB/s):    68.1920   MB/sec
+
+                        * Consumer Throughput(msgs/s):  502105.5  msgs/sec
+                        * Consumer Throughput(MB/s):    251.0527  MB/sec
+                        * Mean Latency:                 26.92     ms
+
+                    * Kafka[5 partitions]:
                         * Producer Throughput(msgs/s):  102955.7  msgs/sec
                         * Producer Throughput(MB/s):    51.4779   MB/sec
 
                         * Consumer Throughput(msgs/s):  692260.2  msgs/sec
                         * Consumer Throughput(MB/s):    346.1301  MB/sec
                         * Mean Latency:                 17.01     ms
+
+                    * Kafka[16 partitions]:
+                        * Producer Throughput(msgs/s):  181214.4  msgs/sec
+                        * Producer Throughput(MB/s):    90.6072   MB/sec
+
+                        * Consumer Throughput(msgs/s):  589047.0  msgs/sec
+                        * Consumer Throughput(MB/s):    294.5235  MB/sec
+                        * Mean Latency:                 21.02     ms
 
                     * RabbitMQ:
                         * Producer Throughput(msgs/s):  4214,9    msgs/sec
@@ -482,13 +514,29 @@ Johan's Origo Method:
 
 
                 Results (Mean result of 3 runs):
-                    * Kafka:
+                    * Kafka[1 partiton]:
+                        * Producer Throughput(msgs/s):  158206.4  msgs/sec
+                        * Producer Throughput(MB/s):    79.1032   MB/sec
+
+                        * Consumer Throughput(msgs/s):  602842.6  msgs/sec
+                        * Consumer Throughput(MB/s):    301.4213  MB/sec
+                        * Mean Latency:                 23.37     ms
+
+                    * Kafka[5 partitons]:
                         * Producer Throughput(msgs/s):  122441.9  msgs/sec
                         * Producer Throughput(MB/s):    61.2209   MB/sec
 
                         * Consumer Throughput(msgs/s):  852322.4  msgs/sec
                         * Consumer Throughput(MB/s):    426.1612  MB/sec
                         * Mean Latency:                 14.04     ms
+
+                    * Kafka[16 partitons]:
+                        * Producer Throughput(msgs/s):  233092.4  msgs/sec
+                        * Producer Throughput(MB/s):    116.5462  MB/sec
+
+                        * Consumer Throughput(msgs/s):  737448.8  msgs/sec
+                        * Consumer Throughput(MB/s):    368.7244  MB/sec
+                        * Mean Latency:                 15.82     ms
 
                     * RabbitMQ:
                         * Producer Throughput(msgs/s):  4310.7    msgs/sec
@@ -524,13 +572,29 @@ Johan's Origo Method:
 
 
                 Results (Mean result of 3 runs):
-                    * Kafka:
+                    * Kafka[1 partiton]:
+                        * Producer Throughput(msgs/s):  78759.8   msgs/sec
+                        * Producer Throughput(MB/s):    78.7598   MB/sec
+
+                        * Consumer Throughput(msgs/s):  269782.7  msgs/sec
+                        * Consumer Throughput(MB/s):    269.7827  MB/sec
+                        * Mean Latency:                 25.30     ms
+
+                    * Kafka[5 partitons]:
                         * Producer Throughput(msgs/s):  62606.7   msgs/sec
                         * Producer Throughput(MB/s):    62.6067   MB/sec
 
                         * Consumer Throughput(msgs/s):  478281.3  msgs/sec
                         * Consumer Throughput(MB/s):    478.2813  MB/sec
                         * Mean Latency:                 13.92     ms
+
+                    * Kafka[16 partitons]:
+                        * Producer Throughput(msgs/s):  119819.6  msgs/sec
+                        * Producer Throughput(MB/s):    119.8200  MB/sec
+
+                        * Consumer Throughput(msgs/s):  389796.2  msgs/sec
+                        * Consumer Throughput(MB/s):    389.7962  MB/sec
+                        * Mean Latency:                 19.38     ms
 
                     * RabbitMQ:
                         * Producer Throughput(msgs/s):  3090.3    msgs/sec
@@ -1419,7 +1483,7 @@ Johan's Origo Method:
             1.30) Test having a 5 broker setup with 1 prod/cons for seeing how much impact scaling(replication) has compared to Test 4 (3 broker setup):
                 Test 30: 
                         Machine Type:                       e2-highcpu-8
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        1 prod/cons
                         Message Setting:                    500 B
@@ -1427,42 +1491,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  64372.3   msgs/sec
+                        * Producer Throughput(MB/s):    32.1861   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  64359.5   msgs/sec
+                        * Consumer Throughput(MB/s):    32.1798   MB/sec
+                        * Mean Latency:                 35.21     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  145699.7  msgs/sec
+                        * Producer Throughput(MB/s):    72.8499   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  145663.4  msgs/sec
+                        * Consumer Throughput(MB/s):    72.8317   MB/sec
+                        * Mean Latency:                 15.69     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  13315.0   msgs/sec
+                        * Producer Throughput(MB/s):    6.6575    MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  13311.3   msgs/sec
+                        * Consumer Throughput(MB/s):    6.6556    MB/sec
+                        * Mean Latency:                 308.65    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  39008.1   msgs/sec
+                        * Producer Throughput(MB/s):    19.5041   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  38998.9   msgs/sec
+                        * Consumer Throughput(MB/s):    19.4995   MB/sec
+                        * Mean Latency:                 121.32    ms
 
 
             1.31) Test having a 5 broker setup with 1 prod/cons for seeing how much impact scaling(replication) has compared to Test 23 (3 broker setup):
                 Test 31: 
                         Machine Type:                       e2-highcpu-8
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        1 prod/cons
                         Message Setting:                    1000 B
@@ -1470,42 +1534,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  35592.8   msgs/sec
+                        * Producer Throughput(MB/s):    35.5928   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  35583.5   msgs/sec
+                        * Consumer Throughput(MB/s):    35.5835   MB/sec
+                        * Mean Latency:                 31.90     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  74514.1   msgs/sec
+                        * Producer Throughput(MB/s):    74.5141   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  74484.9   msgs/sec
+                        * Consumer Throughput(MB/s):    74.4849   MB/sec
+                        * Mean Latency:                 16.99     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  12434.0   msgs/sec
+                        * Producer Throughput(MB/s):    12.4340   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  12430.7   msgs/sec
+                        * Consumer Throughput(MB/s):    12.4307   MB/sec
+                        * Mean Latency:                 165.74    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  23698.1   msgs/sec
+                        * Producer Throughput(MB/s):    23.6981   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  23690.3   msgs/sec
+                        * Consumer Throughput(MB/s):    23.6903   MB/sec
+                        * Mean Latency:                 89.93     ms
 
 
             1.32) Test having a 5 broker setup with 1 prod/cons for seeing how much impact scaling(replication) has compared to Test 24 (3 broker setup):
                 Test 32: 
                         Machine Type:                       e2-highcpu-8
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        1 prod/cons
                         Message Setting:                    4000 B
@@ -1513,42 +1577,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  9639.7    msgs/sec
+                        * Producer Throughput(MB/s):    38.5588   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  9637.2    msgs/sec
+                        * Consumer Throughput(MB/s):    38.5488   MB/sec
+                        * Mean Latency:                 30.32     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  18112.1   msgs/sec
+                        * Producer Throughput(MB/s):    72.4485   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  18105.6   msgs/sec
+                        * Consumer Throughput(MB/s):    72.4223   MB/sec
+                        * Mean Latency:                 18.26     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  8512.2    msgs/sec
+                        * Producer Throughput(MB/s):    34.0489   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  8510.3    msgs/sec
+                        * Consumer Throughput(MB/s):    34.0410   MB/sec
+                        * Mean Latency:                 59.83     ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  6690.5    msgs/sec
+                        * Producer Throughput(MB/s):    26.7622   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  6688.4    msgs/sec
+                        * Consumer Throughput(MB/s):    26.7536   MB/sec
+                        * Mean Latency:                 86.61     ms
 
 
             1.33) Test having a 5 broker setup with 1 prod/cons for seeing how much impact scaling(replication) has compared to Test 31 (3 broker setup):
                 Test 33: 
                         Machine Type:                       e2-highcpu-16
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        1 prod/cons
                         Message Setting:                    1000 B
@@ -1556,42 +1620,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  42678.6   msgs/sec
+                        * Producer Throughput(MB/s):    42.6786   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  42671.1   msgs/sec
+                        * Consumer Throughput(MB/s):    42.6711   MB/sec
+                        * Mean Latency:                 27.32     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  90449.9   msgs/sec
+                        * Producer Throughput(MB/s):    90.4499   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  90424.79  msgs/sec
+                        * Consumer Throughput(MB/s):    90.4248   MB/sec
+                        * Mean Latency:                 14.03     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  15363.9   msgs/sec
+                        * Producer Throughput(MB/s):    15.3639   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  15359.9   msgs/sec
+                        * Consumer Throughput(MB/s):    15.3599   MB/sec
+                        * Mean Latency:                 133.94    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  30541.9   msgs/sec
+                        * Producer Throughput(MB/s):    30.5419   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  30532.8   msgs/sec
+                        * Consumer Throughput(MB/s):    30.5328   MB/sec
+                        * Mean Latency:                 69.79     ms
 
 
             1.34) Test having a 5 broker setup with 1 prod/cons for seeing how much impact scaling(replication) has compared to Test 32 (3 broker setup):
                 Test 34: 
                         Machine Type:                       e2-highcpu-16
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        1 prod/cons
                         Message Setting:                    4000 B
@@ -1599,42 +1663,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  10379.5   msgs/sec
+                        * Producer Throughput(MB/s):    41.5178   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  10376.6   msgs/sec
+                        * Consumer Throughput(MB/s):    41.5064   MB/sec
+                        * Mean Latency:                 28.60     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  23270.7   msgs/sec
+                        * Producer Throughput(MB/s):    93.0829   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  23264.7   msgs/sec
+                        * Consumer Throughput(MB/s):    93.0586   MB/sec
+                        * Mean Latency:                 14.21     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  9402.5    msgs/sec
+                        * Producer Throughput(MB/s):    37.6102   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  9400.3    msgs/sec
+                        * Consumer Throughput(MB/s):    37.6013   MB/sec
+                        * Mean Latency:                 53.911    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  7027.5    msgs/sec
+                        * Producer Throughput(MB/s):    28.1102   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  7025.9    msgs/sec
+                        * Consumer Throughput(MB/s):    28.1034   MB/sec
+                        * Mean Latency:                 78.60     ms
 
 
             1.35) Test having a 5 broker setup with 3 prod/cons for seeing how much impact scaling(replication) has compared to Test 29 (3 broker setup):
                 Test 35: 
                         Machine Type:                       e2-highcpu-16
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        3 prod/cons
                         Message Setting:                    4000 B
@@ -1642,42 +1706,42 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  20208.2   msgs/sec
+                        * Producer Throughput(MB/s):    80.8328   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  51506.8   msgs/sec
+                        * Consumer Throughput(MB/s):    206.0273  MB/sec
+                        * Mean Latency:                 20.39     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  32264.2   msgs/sec
+                        * Producer Throughput(MB/s):    129.0568  MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  69638.0   msgs/sec
+                        * Consumer Throughput(MB/s):    278.5520  MB/sec
+                        * Mean Latency:                 16.74     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  2401.3    msgs/sec
+                        * Producer Throughput(MB/s):    9.6052    MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  9135.5    msgs/sec
+                        * Consumer Throughput(MB/s):    36.5421   MB/sec
+                        * Mean Latency:                 507.14    ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  8274.9    msgs/sec
+                        * Producer Throughput(MB/s):    33.1000   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  17687.1   msgs/sec
+                        * Consumer Throughput(MB/s):    70.7484   MB/sec
+                        * Mean Latency:                 99.65     ms
 
 
             1.36) Test having a 5 broker setup with 5 prod/cons for seeing how much impact scaling(replication) has compared to Test 26 (3 broker setup):
                 Test 36: 
                         Machine Type:                       e2-highcpu-16
-                        Cluster Setup:                      1
+                        Cluster Setup:                      5
                         Brokers:                            Kafka, RabbitMQ, STAN
                         Producer Mode/Consumer Mode:        5 prod/cons
                         Message Setting:                    4000 B
@@ -1685,36 +1749,36 @@ Johan's Origo Method:
 
                 Results (Mean result of 3 runs):
                     * Kafka[1 partition]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  19214.6   msgs/sec
+                        * Producer Throughput(MB/s):    76.8585   MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  72059.3   msgs/sec
+                        * Consumer Throughput(MB/s):    288.2373  MB/sec
+                        * Mean Latency:                 26.48     ms
 
                     * Kafka[16 partitions]:
-                        * Producer Throughput(msgs/s):    msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  30965.7   msgs/sec
+                        * Producer Throughput(MB/s):    123.8627  MB/sec
 
-                        * Consumer Throughput(msgs/s):    msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                      ms
+                        * Consumer Throughput(msgs/s):  101092.3  msgs/sec
+                        * Consumer Throughput(MB/s):    404.3692  MB/sec
+                        * Mean Latency:                 27.78     ms
 
                     * RabbitMQ:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):        MB/sec
+                        * Producer Throughput(msgs/s):  1230.0    msgs/sec
+                        * Producer Throughput(MB/s):    4.9200    MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):        MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  7042.1    msgs/sec
+                        * Consumer Throughput(MB/s):    28.1682   MB/sec
+                        * Mean Latency:                 6670.19   ms
 
                     * STAN:
-                        * Producer Throughput(msgs/s):     msgs/sec
-                        * Producer Throughput(MB/s):       MB/sec
+                        * Producer Throughput(msgs/s):  8868.5    msgs/sec
+                        * Producer Throughput(MB/s):    35.4739   MB/sec
 
-                        * Consumer Throughput(msgs/s):     msgs/sec
-                        * Consumer Throughput(MB/s):       MB/sec
-                        * Mean Latency:                     ms
+                        * Consumer Throughput(msgs/s):  28255.8   msgs/sec
+                        * Consumer Throughput(MB/s):    113.0233  MB/sec
+                        * Mean Latency:                 145.15    ms
 
 
 

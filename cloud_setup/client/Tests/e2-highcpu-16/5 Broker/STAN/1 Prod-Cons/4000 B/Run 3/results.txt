@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            stan
+Host:                  35.228.198.185
+BrokerPort:            4222
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test6
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             5m6.24206473s
+Broker:                   stan (35.228.198.185)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 306172.312 | 5715.736             |
+| AVG      |       | 306172.312 | 5715.736             |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+--------+--------+--------+---------+---------+--------+--------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN   |   Q1   |   Q2   |   Q3    |   MAX   |  MEAN  |  IQR   | STD DEV |
++----------+-------+------------+----------------------+--------+--------+--------+---------+---------+--------+--------+---------+
+| 1        | false | 306239.125 | 5714.489             | 20     | 86     | 94     | 101     | 683     | 93.393 | 15     | 20.040  |
+| AVG      |       | 306239.125 | 5714.489             | 20.000 | 86.000 | 94.000 | 101.000 | 683.000 | 93.393 | 15.000 | 20.040  |
++----------+-------+------------+----------------------+--------+--------+--------+---------+---------+--------+--------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

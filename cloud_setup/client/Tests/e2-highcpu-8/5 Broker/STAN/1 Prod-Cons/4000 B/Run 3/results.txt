@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            stan
+Host:                  35.228.62.23
+BrokerPort:            4222
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test3
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             4m29.815812942s
+Broker:                   stan (35.228.62.23)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 269750.875 | 6487.467             |
+| AVG      |       | 269750.875 | 6487.467             |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+--------+--------+--------+--------+---------+--------+--------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN   |   Q1   |   Q2   |   Q3   |   MAX   |  MEAN  |  IQR   | STD DEV |
++----------+-------+------------+----------------------+--------+--------+--------+--------+---------+--------+--------+---------+
+| 1        | false | 269814.125 | 6485.947             | 23     | 68     | 80     | 94     | 359     | 81.750 | 26     | 19.240  |
+| AVG      |       | 269814.125 | 6485.947             | 23.000 | 68.000 | 80.000 | 94.000 | 359.000 | 81.750 | 26.000 | 19.240  |
++----------+-------+------------+----------------------+--------+--------+--------+--------+---------+--------+--------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+

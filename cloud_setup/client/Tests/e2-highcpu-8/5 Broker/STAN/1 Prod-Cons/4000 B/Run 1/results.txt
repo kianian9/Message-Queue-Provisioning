@@ -1,0 +1,53 @@
+************************ Settings ************************
+BrokerName:            stan
+Host:                  35.228.62.23
+BrokerPort:            4222
+Username[RabbitMQ]:    guest
+Password[RabbitMQ]:    guest
+MessageSize:           4000
+Num Messages:          1750000
+Nr Producers:          1
+Nr Consumers:          1
+Queue type[RabbitMQ]:  QUORUM
+Cluster ID[STAN]:      stan
+Topic[Kafka/STAN]:     test1
+**********************************************************
+
+
+Waiting for peers to be done
+
+Publisher id: 1 starting publishing...
+Subscriber id: 1 starting consuming...
+
+Publisher id: 1 has completed
+
+Subscriber id: 1 has completed
+All peers done, getting results...
+
+TEST SUMMARY
+Time Elapsed:             4m5.410102791s
+Broker:                   stan (35.228.62.23)
+Number Publishers:        1
+Number Subscribers:       1
+Total messages produced:  1750000
+Total messages consumed:  1750000
+Bytes per message:        4000
+Total data produced (KB): 7000000
+Total data consumed (KB): 7000000
+
++----------+-------+------------+----------------------+
+| PRODUCER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |
++----------+-------+------------+----------------------+
+| 1        | false | 245317.969 | 7133.599             |
+| AVG      |       | 245317.969 | 7133.599             |
++----------+-------+------------+----------------------+
++----------+-------+------------+----------------------+--------+--------+--------+--------+----------+--------+--------+---------+
+| CONSUMER | ERROR |  DURATION  | THROUGHPUT (MSG/SEC) |  MIN   |   Q1   |   Q2   |   Q3   |   MAX    |  MEAN  |  IQR   | STD DEV |
++----------+-------+------------+----------------------+--------+--------+--------+--------+----------+--------+--------+---------+
+| 1        | false | 245407.938 | 7130.984             | 19     | 53     | 67     | 87     | 8006     | 90.925 | 34     | 314.729 |
+| AVG      |       | 245407.938 | 7130.984             | 19.000 | 53.000 | 67.000 | 87.000 | 8006.000 | 90.925 | 34.000 | 314.729 |
++----------+-------+------------+----------------------+--------+--------+--------+--------+----------+--------+--------+---------+
+All units ms unless noted otherwise
+********************************************************** DONE **********************************************************
+
+
