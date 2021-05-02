@@ -115,7 +115,7 @@ if terraform apply -var "project_id=$PROJECT_ID" -var "node_count=$NR_NODES" -va
     printf "\nInitializing Prometheous Rules\n"
     kubectl apply -f kafka/prometheus-rules.yaml -n kafka
 
-    # Creating Prometheous Prometheous Instance For Kafka
+    # Creating Prometheous Instance For Kafka
     printf "\nInitializing Prometheous Instance For Kafka\n"
     kubectl apply -f kafka/prometheus.yaml -n kafka
 
