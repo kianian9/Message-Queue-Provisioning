@@ -1,17 +1,15 @@
-# RabbitMQ Cluster - GKE
-Setups a RabbitMQ Cluster in GKE
+# NATS Streaming (STAN) Cluster Setup In GKE
+Creates a STAN Kubernetes cluster using Helm charts
 
-## Setup Cluster
-The **setup_cluster**-script creates a 3 worker node cluster (zonal) where each broker is run on a separate node.
-Each node assigns a 3GB volume(standard HDD) for RabbitMQ persistent storaging.
+## Setup Of Cluster
+The **setup_cluster**-script takes 3 input arguments for being able to create a STAN GKE cluster.
+The flags are:
+* **-projectID**:  Unique id (string) that refers to the GCP project the cluster is intended to be deployed on
+* **-nrNodes**: Numerical value indicating the amount of worker nodes in the cluster
+* **-machineType**: The GCE machine type the worker nodes will be assigned to
 
-## Destroy Cluster
-The **destroy_cluster**-script destroys the GKE-cluster and removes all assigned disks.
+The setup assigns a 100 GiB (Gibibytes) SSD for each broker for persisting data on. The worker nodes are deployed in *europe-north1* region in zone *europe-north1-a*.
 
-
-## Parameters
-In order to change the replication-factor in the cluster, change the amount of worker nodes.
-Also change the replication for the RabbitMQ Cluster Instance (rabbit-instance.yaml).
-Can also set to run with SSD instead of actual HDD.
-
-The Installation follows the **RabbitMQ Cluster Operator guide**: https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
+## Destruction Of Cluster
+The **destroy_cluster**-script takes 1 argument for destroying the GKE-cluster and removing all assigned disks. The flag is:
+* **-projectID**:  Unique id (string) referring to the GCP project the cluster has been created on and will be removed from
