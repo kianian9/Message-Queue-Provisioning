@@ -20,7 +20,8 @@ The **destroy_client**-script takes 1 argument for destroying the GCE instance. 
 * **-producers**: Total number of producers to use in the evaluation, by default set to *1* producer
 * **-consumers**: Total number of consumers to use in the evaluation, by default set to *1* consumer
 * **-queueType**: The queue type to use for the RabbitMQ system, supporting classic mirrored queues (CLASSIC) and quorum based queues *QUORUM* (which is used as default)
-* **-topic**: The cluster id for the STAN brokers, set to *stan* as default
+* **-clusterID**: The cluster id for the STAN brokers, set to *stan* as default
+* **-topic**: The topic or subject to publish and consume from in Kafka and STAN, set to *test* as default
 
 ## Evaluation Framework
 The client pulls the latest [Masih - Message Queue Benchmarking Tool](https://github.com/kianian9/Masih) that is used by the **run_test**-script for evaluating the system. The script takes up to 12 input argument, which are:
